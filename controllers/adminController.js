@@ -30,3 +30,4 @@ export const adminAddProductPage = async (req, res) => {
       res.status(500).send("Something went wrong loading the add product page.");
   }
 };
+

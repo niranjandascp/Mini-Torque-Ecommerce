@@ -1,3 +1,4 @@
+{{!-- contant of add new products --}}
 <section class="content-main">
   <div class="row">
     <div class="col-9">
@@ -16,6 +17,7 @@
         <div class="card-header">
           <h4>Basic</h4>
         </div>
+        {{!-- Product title --}}
         <div class="card-body">
           <form>
             <div class="mb-4">
@@ -27,6 +29,7 @@
                 id="product_name"
               />
             </div>
+            {{!-- Short description --}}
             <div class="mb-4">
               <label class="form-label">Short description</label>
               <input
@@ -36,6 +39,7 @@
                 id="product_name"
               />
             </div>
+            {{!-- Full description --}}
             <div class="mb-4">
               <label class="form-label">Full description</label>
               <textarea
@@ -44,6 +48,7 @@
                 rows="4"
               ></textarea>
             </div>
+            {{!-- Price --}}
             <div class="row">
               <div class="col-lg-4">
                 <div class="mb-4">
@@ -53,21 +58,20 @@
                   </div>
                 </div>
               </div>
+              {{!-- discount price --}}
               <div class="col-lg-4">
                 <div class="mb-4">
                   <label class="form-label">Discount price</label>
                   <input placeholder="₹" type="text" class="form-control" />
                 </div>
               </div>
+              {{!-- Stock --}}
               <div class="col-lg-4">
-                <label class="form-label">Currency</label>
-                <select class="form-select">
-                  <option> USD </option>
-                  <option> EUR </option>
-                  <option> RUBL </option>
-                </select>
+                <label class="form-label">Stock</label>
+                <input placeholder="Quantity" type="text" class="form-control" />
               </div>
             </div>
+            {{!-- Tax rate --}}
             <div class="mb-4">
               <label class="form-label">Tax rate</label>
               <input
@@ -84,7 +88,7 @@
           </form>
         </div>
       </div>
-      <!-- card end// -->
+      {{!-- <!-- card end// -->
       <div class="card mb-4">
         <div class="card-header">
           <h4>Shipping</h4>
@@ -136,7 +140,8 @@
           </form>
         </div>
       </div>
-      <!-- card end// -->
+
+      <!-- card end// --> --}}
     </div>
     <div class="col-lg-3">
       <div class="card mb-4">
@@ -155,30 +160,33 @@
         <div class="card-header">
           <h4>Organization</h4>
         </div>
+        {{!-- Brands & Category --}}
         <div class="card-body">
           <div class="row gx-2">
             <div class="col-sm-6 mb-3">
-              <label class="form-label">Category</label>
+              <label class="form-label">Brands</label>
               <select class="form-select">
-                <option> Automobiles </option>
-                <option> Home items </option>
-                <option> Electronics </option>
-                <option> Smartphones </option>
-                <option> Sport items </option>
-                <option> Baby and Tous </option>
+                <option> Mini GT </option>
+                <option> Johnny Lighting </option>
+                <option> Maisto </option>
+                <option> Tomica </option>
+                <option> Majorette </option>
+                <option> Hot Wheels </option>
               </select>
             </div>
             <div class="col-sm-6 mb-3">
-              <label class="form-label">Sub-category</label>
+              <label class="form-label">Category</label>
               <select class="form-select">
-                <option> Nissan </option>
-                <option> Honda </option>
-                <option> Mercedes </option>
-                <option> Chevrolet </option>
+                <option> Supercars </option>
+                <option> Sports Cars </option>
+                <option> JDM Cars </option>
+                <option> Muscle Cars </option>
+                <option> SUVs </option>
               </select>
             </div>
+            {{!-- Rating --}}
             <div class="mb-4">
-              <label for="product_name" class="form-label">Tags</label>
+              <label for="product_name" class="form-label">Rating</label>
               <input type="text" class="form-control" />
             </div>
           </div>
