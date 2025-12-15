@@ -1,0 +1,41 @@
+{
+  "name": "mini-torque-ecommerce",
+  "version": "1.0.0",
+  "description": "A full-stack web application built with Node.js, Express, Handlebars (view engine), Bootstrap, and JavaScript, featuring JWT-based authentication with separate Admin and User panels for secure access and management.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niranjandascp/Mini-Torque-Ecommerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niranjandascp/Mini-Torque-Ecommerce/issues"
+  },
+  "homepage": "https://github.com/niranjandascp/Mini-Torque-Ecommerce#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.3",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.0.0",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
