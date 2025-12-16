@@ -1,200 +1,158 @@
-{{!-- contant of add new products --}}
 <section class="content-main">
-  <div class="row">
-    <div class="col-9">
-      <div class="content-header">
-        <h2 class="content-title">Add New Product</h2>
-        <div>
-          <button
-            class="btn btn-light rounded font-sm mr-5 text-body hover-up"
-          >Save to draft</button>
-          <button class="btn btn-md rounded font-sm hover-up">Publich</button>
+  <form
+    action="/admin/add-product"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="row">
+      <div class="col-9">
+        <div class="content-header">
+          <h2 class="content-title">Add New Product</h2>
+          <div>
+            <button
+              type="submit"
+              class="btn btn-md rounded font-sm hover-up"
+            >
+              Add Product
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4>Basic</h4>
-        </div>
-        {{!-- Product title --}}
-        <div class="card-body">
-          <form>
+
+      <!-- LEFT -->
+      <div class="col-lg-6">
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4>Basic</h4>
+          </div>
+          <div class="card-body">
             <div class="mb-4">
-              <label for="product_name" class="form-label">Product title</label>
+              <label class="form-label">Product title</label>
               <input
                 type="text"
-                placeholder="Type here"
+                name="productName"
                 class="form-control"
-                id="product_name"
+                required
               />
             </div>
-            {{!-- Short description --}}
+
             <div class="mb-4">
               <label class="form-label">Short description</label>
               <input
                 type="text"
-                placeholder="Type here"
+                name="shortDescription"
                 class="form-control"
-                id="product_name"
               />
             </div>
-            {{!-- Full description --}}
+
             <div class="mb-4">
               <label class="form-label">Full description</label>
               <textarea
-                placeholder="Type here"
-                class="form-control"
+                name="description"
                 rows="4"
+                class="form-control"
               ></textarea>
             </div>
-            {{!-- Price --}}
+
             <div class="row">
               <div class="col-lg-4">
-                <div class="mb-4">
-                  <label class="form-label">Price</label>
-                  <div class="row gx-2">
-                    <input placeholder="₹" type="text" class="form-control" />
-                  </div>
-                </div>
+                <label class="form-label">Price</label>
+                <input
+                  type="number"
+                  name="price"
+                  class="form-control"
+                  required
+                />
               </div>
-              {{!-- discount price --}}
+
               <div class="col-lg-4">
-                <div class="mb-4">
-                  <label class="form-label">Discount price</label>
-                  <input placeholder="₹" type="text" class="form-control" />
-                </div>
+                <label class="form-label">Discount price</label>
+                <input
+                  type="number"
+                  name="discountPrice"
+                  class="form-control"
+                />
               </div>
-              {{!-- Stock --}}
+
               <div class="col-lg-4">
                 <label class="form-label">Stock</label>
-                <input placeholder="Quantity" type="text" class="form-control" />
+                <input
+                  type="number"
+                  name="stock"
+                  class="form-control"
+                  required
+                />
               </div>
             </div>
-            {{!-- Tax rate --}}
-            <div class="mb-4">
-              <label class="form-label">Tax rate</label>
-              <input
-                type="text"
-                placeholder="%"
-                class="form-control"
-                id="product_name"
-              />
-            </div>
-            <label class="form-check mb-4">
-              <input class="form-check-input" type="checkbox" value="" />
-              <span class="form-check-label"> Make a template </span>
-            </label>
-          </form>
-        </div>
-      </div>
-      {{!-- <!-- card end// -->
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4>Shipping</h4>
-        </div>
-        <div class="card-body">
-          <form>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="mb-4">
-                  <label for="product_name" class="form-label">Width</label>
-                  <input
-                    type="text"
-                    placeholder="inch"
-                    class="form-control"
-                    id="product_name"
-                  />
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="mb-4">
-                  <label for="product_name" class="form-label">Height</label>
-                  <input
-                    type="text"
-                    placeholder="inch"
-                    class="form-control"
-                    id="product_name"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="mb-4">
-              <label for="product_name" class="form-label">Weight</label>
-              <input
-                type="text"
-                placeholder="gam"
-                class="form-control"
-                id="product_name"
-              />
-            </div>
-            <div class="mb-4">
-              <label for="product_name" class="form-label">Shipping fees</label>
-              <input
-                type="text"
-                placeholder="$"
-                class="form-control"
-                id="product_name"
-              />
-            </div>
-          </form>
+          </div>
         </div>
       </div>
 
-      <!-- card end// --> --}}
-    </div>
-    <div class="col-lg-3">
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4>Media</h4>
+      <!-- RIGHT -->
+      <div class="col-lg-3">
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4>Media</h4>
+          </div>
+           <div class="card-body">
+             <label class="form-label">Thumbnail</label>
+            <input
+              type="file"
+              name="thumbnail"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="card-body">
+             <label class="form-label">Product Images</label>
+            <input
+              type="file"
+              name="productImages"
+              class="form-control"
+              multiple
+              required
+            />
+          </div>
+         
         </div>
-        <div class="card-body">
-          <div class="input-upload">
-            <img src="assets/imgs/theme/upload.svg" alt="" />
-            <input class="form-control" type="file" />
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4>Organization</h4>
+          </div>
+          <div class="card-body">
+            <label class="form-label">Brand</label>
+            <select name="brand" class="form-select" required>
+              <option value="">Select brand</option>
+              <option>Mini GT</option>
+              <option>Johnny Lighting</option>
+              <option>Maisto</option>
+              <option>Tomica</option>
+              <option>Majorette</option>
+              <option>Hot Wheels</option>
+            </select>
+
+            <label class="form-label mt-3">Category</label>
+            <select name="category" class="form-select" required>
+              <option value="">Select category</option>
+              <option>Supercars</option>
+              <option>Sports Cars</option>
+              <option>JDM Cars</option>
+              <option>Muscle Cars</option>
+              <option>SUVs</option>
+            </select>
+
+            <label class="form-label mt-3">Rating</label>
+            <input
+              type="number"
+              name="rating"
+              step="0.1"
+              max="5"
+              class="form-control"
+            />
           </div>
         </div>
       </div>
-      <!-- card end// -->
-      <div class="card mb-4">
-        <div class="card-header">
-          <h4>Organization</h4>
-        </div>
-        {{!-- Brands & Category --}}
-        <div class="card-body">
-          <div class="row gx-2">
-            <div class="col-sm-6 mb-3">
-              <label class="form-label">Brands</label>
-              <select class="form-select">
-                <option> Mini GT </option>
-                <option> Johnny Lighting </option>
-                <option> Maisto </option>
-                <option> Tomica </option>
-                <option> Majorette </option>
-                <option> Hot Wheels </option>
-              </select>
-            </div>
-            <div class="col-sm-6 mb-3">
-              <label class="form-label">Category</label>
-              <select class="form-select">
-                <option> Supercars </option>
-                <option> Sports Cars </option>
-                <option> JDM Cars </option>
-                <option> Muscle Cars </option>
-                <option> SUVs </option>
-              </select>
-            </div>
-            {{!-- Rating --}}
-            <div class="mb-4">
-              <label for="product_name" class="form-label">Rating</label>
-              <input type="text" class="form-control" />
-            </div>
-          </div>
-          <!-- row.// -->
-        </div>
-      </div>
-      <!-- card end// -->
     </div>
-  </div>
+  </form>
 </section>
-<!-- content-main end// -->
