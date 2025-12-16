@@ -91,7 +91,24 @@ export const getAllProducts = async () => {
 };
 
 // edit and update prooducts
+export const editProductDetailsPage = async (req, res) => { 
+  try {
+    const productId = req.params.id;
+    const db = await connectDB();
+
+    const productDetailsEdit = await db
+      .collection(collection.PRODUCTS_COLLECTION)
+      .findOne({ _id: new ObjectId(String(productId)) });
+
+    res.render("admin/productDetailsEdit", { layout: "admin", title: "Edit Product Details", productDetails: productDetailsEdit });
+  } catch (error) {
+    console.error("❌ Edit product details error:", error);
+    res.status(500).send("Failed to edit product details");
+  }
+};
+
 export const editProductDetails = async (req, res) => {
+  console.log("edit product fucion called >>>>>>>>>>",req.params.id, req.body);
   try {
     const productId = req.params.id;
     const updatedData = req.body;
@@ -102,12 +119,16 @@ export const editProductDetails = async (req, res) => {
       .collection(collection.PRODUCTS_COLLECTION)
       .updateOne({_id: new ObjectId(productId)}, { $set: updatedData });
 
+      res.redirect("/admin/product/edit");
+
     console.log("Edit product route working >>>>>>>>");
   } catch (error) {
     console.error("❌ Edit product error:", error);
     res.status(500).send("Failed to edit product");
   }
 };
+
+
 
 
 // delete product

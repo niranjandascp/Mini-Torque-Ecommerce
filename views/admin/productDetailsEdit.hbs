@@ -1,0 +1,162 @@
+<section class="content-main">
+  <form action="/admin/product/{{productDetails._id}}" method="POST">
+    <div class="row">
+      <div class="col-9">
+        <div class="content-header">
+          <h2 class="content-title">Edit Product Details</h2>
+          <h3>{{productDetails._id}}</h3>
+          <div>
+            <button type="submit" class="btn btn-md rounded font-sm hover-up">
+              Update Product
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEFT -->
+      <div class="col-lg-6">
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4>Basic</h4>
+          </div>
+          {{!-- product title --}}
+          <div class="card-body">
+            <div class="mb-4">
+              <label class="form-label">Product title</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Type here"
+                class="form-control"
+                value="{{productDetails.productName}}"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Short description</label>
+              <input type="text"
+              id="shortDescription" name="shortDescription" placeholder="Short description" class="form-control" value="{{productDetails.shortDescription}}" />
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">Full description</label>
+              <textarea
+                id="description"
+                name="description"
+                placeholder="Type here"
+                rows="4"
+                class="form-control"
+              >{{productDetails.description}}</textarea>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4">
+                <label class="form-label">Price</label>
+                <input
+                  id="price"
+                  type="number"
+                  name="price"
+                  placeholder="₹"
+                  class="form-control"
+                  value="{{productDetails.price}}"
+                  required
+                />
+              </div>
+
+              <div class="col-lg-4">
+                <label class="form-label">Discount price</label>
+                <input
+                  id="discountPrice"
+                  type="number"
+                  name="discountPrice"
+                  placeholder="₹"
+                  class="form-control"
+                  value="{{productDetails.discountPrice}}"
+                />
+              </div>
+
+              <div class="col-lg-4">
+                <label class="form-label">Stock</label>
+                <input
+                  type="number"
+                  id="stock"
+                  name="stock"
+                  placeholder="Quantity"
+                  value="{{productDetails.stock}}"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="col-lg-3">
+        {{!-- <div class="card mb-4">
+          <div class="card-header">
+            <h4>Media</h4>
+          </div>
+          <div class="card-body">
+            <label class="form-label">Thumbnail</label>
+            <input type="file" name="thumbnail" class="form-control" required />
+          </div>
+          <div class="card-body">
+            <label class="form-label">Product Images</label>
+            <input
+              type="file"
+              name="productImages"
+              class="form-control"
+              multiple
+              required
+            />
+          </div>
+
+        </div> --}}
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4>Organization</h4>
+          </div>
+          <div class="card-body">
+            <label class="form-label">Brand</label>
+            <select name="brand" class="form-select" required>
+              <option value="">Select brand</option>
+              <option value="Mini GT" {{#ifEquals productDetails.brand "Mini GT"}}selected{{/ifEquals}}>Mini GT</option>
+              <option value="Johnny Lighting" {{#ifEquals productDetails.brand "Johnny Lighting"}}selected{{/ifEquals}}>Johnny Lighting</option>
+              <option value="Maisto" {{#ifEquals productDetails.brand "Maisto"}}selected{{/ifEquals}}>Maisto</option>
+              <option value="Tomica" {{#ifEquals productDetails.brand "Tomica"}}selected{{/ifEquals}}>Tomica</option>
+              <option value="Majorette" {{#ifEquals productDetails.brand "Majorette"}}selected{{/ifEquals}}>Majorette</option>
+              <option value="Hot Wheels" {{#ifEquals productDetails.brand "Hot Wheels"}}selected{{/ifEquals}}>Hot Wheels</option>
+            </select>
+
+            <label class="form-label mt-3">Category</label>
+            <select name="category" class="form-select" required>
+              <option value="">Select category</option>
+              <option value="Supercars" {{#ifEquals productDetails.category "Supercars"}}selected{{/ifEquals}}>Supercars</option>
+              <option value="Sports Cars" {{#ifEquals productDetails.category "Sports Cars"}}selected{{/ifEquals}}>Sports Cars</option>
+              <option value="JDM Cars" {{#ifEquals productDetails.category "JDM Cars"}}selected{{/ifEquals}}>JDM Cars</option>
+              <option value="Muscle Cars" {{#ifEquals productDetails.category "Muscle Cars"}}selected{{/ifEquals}}>Muscle Cars</option>
+              <option value="SUVs" {{#ifEquals productDetails.category "SUVs"}}selected{{/ifEquals}}>SUVs</option>
+            </select>
+
+            <label class="form-label mt-3">Rating</label>
+            <input
+              id="rating"
+              type="number"
+              name="rating"
+              placeholder="Rating out of 5"
+              step="0.1"
+              max="5"
+              value="{{productDetails.rating}}"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
