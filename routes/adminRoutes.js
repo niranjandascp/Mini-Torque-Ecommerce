@@ -6,7 +6,7 @@ import {
   adminProductlistPage,
 } from "../controllers/adminController.js";
 import { adminLogin } from "../controllers/adminAuth.js";
-import { createProduct } from "../controllers/productController.js";
+import { createProduct, deleteProduct, editProductDetails } from "../controllers/productController.js";
 import { uploadFiles } from "../middleware/uploadMiddileware.js";
 
 const adminRoutes = Router({ mergeParams: true });
@@ -29,5 +29,9 @@ adminRoutes.post(
 );
 
 adminRoutes.get("/products-list", adminProductlistPage);
+
+adminRoutes.post("/product/:id/delete", deleteProduct);
+
+adminRoutes.post("/products-list/edit/:id",editProductDetails);
 
 export default adminRoutes;

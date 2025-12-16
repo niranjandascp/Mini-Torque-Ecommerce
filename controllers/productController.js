@@ -1,7 +1,30 @@
 import { v7 as uuidv7 } from "uuid";
 import connectDB from "../config/db.js";
 import collection from "../config/collection.js";
+import { ObjectId } from "mongodb";
+import fs from 'fs';
+import path from 'path';
 
+
+const deleteFile = (filePath) => {
+  if (!filePath) return;
+
+  const absolutePath = path.join(
+    process.cwd(),
+    'public',
+    filePath
+  );
+
+  if (fs.existsSync(absolutePath)) {
+    fs.unlinkSync(absolutePath);
+    console.log('🗑️ Deleted file:', absolutePath);
+  } else {
+    console.log('⚠️ File not found:', absolutePath);
+  }
+};
+
+
+// create Products
 export const createProduct = async (req, res) => {
   console.log("create product route working >>>>>>>>");
   console.log("Body:", req.body);
@@ -50,6 +73,7 @@ export const createProduct = async (req, res) => {
   }
 };
 
+// get all products
 export const getAllProducts = async () => {
   try {
     const db = await connectDB();
@@ -57,6 +81,7 @@ export const getAllProducts = async () => {
       .collection(collection.PRODUCTS_COLLECTION)
       .find({})
       .toArray();
+      console.log(products)
 
     return products;
   } catch (error) {
@@ -65,3 +90,63 @@ export const getAllProducts = async () => {
   }
 };
 
+// edit and update prooducts
+export const editProductDetails = async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const updatedData = req.body;
+
+    const db = await connectDB();
+
+    await db
+      .collection(collection.PRODUCTS_COLLECTION)
+      .updateOne({_id: new ObjectId(productId)}, { $set: updatedData });
+
+    console.log("Edit product route working >>>>>>>>");
+  } catch (error) {
+    console.error("❌ Edit product error:", error);
+    res.status(500).send("Failed to edit product");
+  }
+};
+
+
+// delete product
+export const deleteProduct = async (req, res) => {
+  try {
+    const productId = req.params.id;
+    console.log('Delete product route working >>>>>>>>', productId);
+
+    const db = await connectDB();
+
+    // 1️⃣ Get product first
+    const productData = await db
+      .collection(collection.PRODUCTS_COLLECTION)
+      .findOne({ _id: new ObjectId(productId) });
+
+    if (!productData) {
+      return res.status(404).send('Product not found');
+    }
+
+    // 2️⃣ Delete thumbnail
+    deleteFile(productData.thumbnail);
+
+    // 3️⃣ Delete product images
+    if (Array.isArray(productData.productImages)) {
+      productData.productImages.forEach((imgPath) => {
+        deleteFile(imgPath);
+      });
+    }
+
+    // 4️⃣ Delete product from DB
+    await db
+      .collection(collection.PRODUCTS_COLLECTION)
+      .deleteOne({ _id: new ObjectId(productId) });
+
+    console.log('✅ Product + images deleted:', productId);
+
+    return res.redirect('/admin/products-list');
+  } catch (error) {
+    console.error('❌ Delete product error:', error);
+    res.status(500).send('Failed to delete product');
+  }
+};

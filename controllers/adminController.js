@@ -1,5 +1,6 @@
 import connectDB from "../config/db.js";
 import collection from "../config/collection.js";
+import { getAllProducts } from "./productController.js";
 
 export const adminLoginPage = async (req, res) => {
   try {
@@ -43,11 +44,7 @@ export const adminProductlistPage = async (req, res) => {
   try {
     const db = await connectDB();
 
-    const allProductsData = await db
-      .collection(collection.PRODUCTS_COLLECTION)
-      .find({})
-      .toArray();
-
+    const allProductsData = await getAllProducts();
     // console.log(allProductsData)
 
     res.render("admin/productList", {

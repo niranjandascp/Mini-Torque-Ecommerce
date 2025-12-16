@@ -1,4 +1,5 @@
 <section class="content-main">
+
   <div class="content-header">
     <div>
       <h2 class="content-title card-title">Products list</h2>
@@ -122,26 +123,20 @@
                 <!-- Button -->
                 <div class="mt-20 d-flex" style="gap: 12px;">
                   <a
-                    href="/admin/books/edit/{{this._id}}"
+                    href="/admin/addProducts/edit/{{this._id}}"
                     class="btn btn-sm font-sm rounded btn-brand"
                   >
                     <i class="material-icons md-edit"></i>
                     Edit
                   </a>
 
-                  {{!-- <a
-                    href="/admin/books/delete/{{_id}}"
-                    class="btn btn-sm btn-danger"
-                    onclick="return confirm('Are you sure you want to delete this book?')"
-                  >
-                    Delete
-                  </a> --}}
-
+                 
                   <form
-                    action="/admin/books/{{this._id}}/delete"
+                    action="/admin/product/{{this._id}}/delete"
                     method="POST"
                     style="display:inline-block"
                   >
+
                     <button
                       type="submit"
                       class="btn btn-sm font-sm btn-light rounded"
