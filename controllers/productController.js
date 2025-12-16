@@ -108,26 +108,38 @@ export const editProductDetailsPage = async (req, res) => {
 };
 
 export const editProductDetails = async (req, res) => {
-  console.log("edit product fucion called >>>>>>>>>>",req.params.id, req.body);
+  console.log("edit product function called >>>>>>>>>>", req.params.id, req.body);
   try {
     const productId = req.params.id;
-    const updatedData = req.body;
+    const data = req.body;
+
+    // Map form fields to database fields
+    const updatedData = {
+      productName: data.title,
+      shortDescription: data.shortDescription,
+      description: data.description,
+      category: data.category,
+      brand: data.brand,
+      price: parseInt(data.price),
+      discountPrice: parseInt(data.discountPrice) || null,
+      stock: parseInt(data.stock),
+      rating: data.rating ? parseFloat(data.rating) : 0,
+      updatedAt: new Date(),
+    };
 
     const db = await connectDB();
 
     await db
       .collection(collection.PRODUCTS_COLLECTION)
-      .updateOne({_id: new ObjectId(productId)}, { $set: updatedData });
-
-      res.redirect("/admin/product/edit");
+      .updateOne({_id: new ObjectId(String(productId))}, { $set: updatedData });
 
     console.log("Edit product route working >>>>>>>>");
+    res.redirect("/admin/products-list");
   } catch (error) {
     console.error("❌ Edit product error:", error);
     res.status(500).send("Failed to edit product");
   }
 };
-
 
 
 

@@ -1,5 +1,5 @@
 <section class="content-main">
-  <form action="/admin/product/{{productDetails._id}}" method="POST">
+  <form method="POST" action="/admin/product-edit/{{productDetails._id}}" >
     <div class="row">
       <div class="col-9">
         <div class="content-header">
@@ -96,26 +96,6 @@
 
       <!-- RIGHT -->
       <div class="col-lg-3">
-        {{!-- <div class="card mb-4">
-          <div class="card-header">
-            <h4>Media</h4>
-          </div>
-          <div class="card-body">
-            <label class="form-label">Thumbnail</label>
-            <input type="file" name="thumbnail" class="form-control" required />
-          </div>
-          <div class="card-body">
-            <label class="form-label">Product Images</label>
-            <input
-              type="file"
-              name="productImages"
-              class="form-control"
-              multiple
-              required
-            />
-          </div>
-
-        </div> --}}
 
         <div class="card mb-4">
           <div class="card-header">
