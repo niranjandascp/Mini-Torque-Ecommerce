@@ -76,3 +76,27 @@ export const signUpPage = (req, res) => {
     res.status(500).send("Error loading sign up page");
   }
 };
+
+export const accountDetailsPage = (req, res) => {
+  try {
+    res.render("user/accountDetailsPage", {
+      title: "Account Details - Mini Torque",
+    });
+  } catch (error) {
+    console.error("❌ Account Details page error:", error);
+    res.status(500).send("Error loading account details page");
+  }
+};
+
+export const productsListingPage = async (req, res) => {
+  try {
+    const products = await getProductsData({ sort: "latest" });
+    res.render("user/productsListingPage", {
+      title: "Products - Mini Torque",
+      products: products,
+    });
+  } catch (error) {
+    console.error("❌ Products Listing page error:", error);
+    res.status(500).send("Error loading products listing page");
+  }
+};

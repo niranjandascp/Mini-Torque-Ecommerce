@@ -125,3 +125,8 @@ export const logIn = async (req, res) => {
         res.status(500).send("Error loading login page");
     }  
 };
+
+export const logoutUser = (req, res) => {
+  res.clearCookie("token");
+  res.redirect("/login");
+};
