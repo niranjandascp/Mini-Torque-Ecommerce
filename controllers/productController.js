@@ -183,3 +183,47 @@ export const deleteProduct = async (req, res) => {
     res.status(500).send('Failed to delete product');
   }
 };
+
+export const getProductsData = async (options = {}) => {
+  try {
+    const db = await connectDB();
+
+    // Build filter dynamically
+    const filter = {};
+    if (options.category) filter.category = options.category;
+    if (options.brand) filter.brand = options.brand;
+
+    let products;
+
+    // Random products
+    if (options.sort === "random") {
+      products = await db
+        .collection(collection.PRODUCTS_COLLECTION)
+        .aggregate([
+          { $match: filter },
+          { $sample: { size: options.limit || 20 } }
+        ])
+        .toArray();
+    } else {
+      // Sorting
+      let sortOption = { createdAt: -1 };
+      if (options.sort === "oldest") sortOption = { createdAt: 1 };
+
+      let query = db
+        .collection(collection.PRODUCTS_COLLECTION)
+        .find(filter)
+        .sort(sortOption);
+
+      if (options.limit) {
+        query = query.limit(Number(options.limit));
+      }
+
+      products = await query.toArray();
+    }
+
+    return products;
+  } catch (error) {
+    console.error("❌ Error in getProductsData:", error);
+    throw error;
+  }
+};
