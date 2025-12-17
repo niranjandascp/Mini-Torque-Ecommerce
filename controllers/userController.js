@@ -54,4 +54,25 @@ export const landingPage = async (req, res) => {
     res.status(500).send("Error loading home page");
   }
 };
- 
+
+export const loginPage = (req, res) => {
+  try {
+    res.render("user/loginPage", {
+      title: "Login - Mini Torque",
+    });
+  } catch (error) {
+    console.error("❌ Login page error:", error);
+    res.status(500).send("Error loading login page");
+  }
+};
+
+export const signUpPage = (req, res) => {
+  try {
+    res.render("user/signUpPage", {
+      title: "Sign Up - Mini Torque",
+    });
+  } catch (error) {
+    console.error("❌ Sign Up page error:", error);
+    res.status(500).send("Error loading sign up page");
+  }
+};
