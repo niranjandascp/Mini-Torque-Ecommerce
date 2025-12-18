@@ -2,33 +2,33 @@
   <section class="home-slider position-relative pt-50">
     <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
       {{#each bannerData}}
-      <div class="single-hero-slider single-animation-wrap">
-        <div class="container">
-          <div class="row align-items-center slider-animated-1">
-            <div class="col-lg-5 col-md-6">
-              <div class="hero-slider-content-2">
-                <h4 class="animated">{{this.titleSmall}}</h4>
-                <h2 class="animated fw-900">{{this.titleMain}}</h2>
-                <h1 class="animated fw-900 text-brand">{{this.highlight}}</h1>
-                <p class="animated">{{this.description}}</p>
-                <a
-                  class="animated btn btn-brush btn-brush-3"
-                  href="shop-product-right.html"
-                > Shop Now </a>
+        <div class="single-hero-slider single-animation-wrap">
+          <div class="container">
+            <div class="row align-items-center slider-animated-1">
+              <div class="col-lg-5 col-md-6">
+                <div class="hero-slider-content-2">
+                  <h4 class="animated">{{this.titleSmall}}</h4>
+                  <h2 class="animated fw-900">{{this.titleMain}}</h2>
+                  <h1 class="animated fw-900 text-brand">{{this.highlight}}</h1>
+                  <p class="animated">{{this.description}}</p>
+                  <a
+                    class="animated btn btn-brush btn-brush-3"
+                    href="shop-product-right.html"
+                  > Shop Now </a>
+                </div>
               </div>
-            </div>
-            <div class="col-lg-7 col-md-6">
-              <div class="single-slider-img single-slider-img-1">
-                <img
-                  class="animated slider-1-1"
-                  src="{{this.image}}"
-                  alt=""
-                />
+              <div class="col-lg-7 col-md-6">
+                <div class="single-slider-img single-slider-img-1">
+                  <img
+                    class="animated slider-1-1"
+                    src="{{this.image}}"
+                    alt=""
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       {{/each}}
     </div>
 
@@ -76,7 +76,7 @@
       </div>
     </div>
   </section>
-  {{!-- featured section --}}
+  {{! featured section }}
   <section
     class="product-tabs section-padding position-relative wow fadeIn animated"
   >
@@ -133,81 +133,83 @@
           role="tabpanel"
           aria-labelledby="tab-one"
         >
-          {{!-- tab one feature --}}
+          {{! tab one feature }}
           <div class="row product-grid-4">
             {{#each featuredProducts}}
-            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-              <div class="product-cart-wrap mb-30">
-                <div class="product-img-action-wrap">
-                  <div class="product-img product-img-zoom">
-                    <a href="/product/view?id={{this._id}}">
-                      <img
-                        class="default-img"
-                        src="{{this.productImages.[0]}}"
-                        alt=""
-                      />
-                      <img
-                        class="hover-img"
-                        src="{{this.productImages.[1]}}"
-                        alt=""
-                      />
-                    </a>
+              <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                <div class="product-cart-wrap mb-30">
+                  <div class="product-img-action-wrap">
+                    <div class="product-img product-img-zoom">
+                      <a href="/product/view?id={{this._id}}">
+                        <img
+                          class="default-img"
+                          src="{{this.productImages.[0]}}"
+                          alt=""
+                        />
+                        <img
+                          class="hover-img"
+                          src="{{this.productImages.[1]}}"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="product-action-1">
+                      <a
+                        aria-label="Quick view"
+                        class="action-btn hover-up"
+                        data-bs-toggle="modal"
+                        data-bs-target="#quickViewModal"
+                      ><i class="fi-rs-eye"></i></a>
+                      <a
+                        aria-label="Add To Wishlist"
+                        class="action-btn hover-up"
+                        href="shop-wishlist.html"
+                      ><i class="fi-rs-heart"></i></a>
+                      <a
+                        aria-label="Compare"
+                        class="action-btn hover-up"
+                        href="shop-compare.html"
+                      ><i class="fi-rs-shuffle"></i></a>
+                    </div>
+                    <div
+                      class="product-badges product-badges-position product-badges-mrg"
+                    >
+                      <span class="hot">Hot</span>
+                    </div>
                   </div>
-                  <div class="product-action-1">
-                    <a
-                      aria-label="Quick view"
-                      class="action-btn hover-up"
-                      data-bs-toggle="modal"
-                      data-bs-target="#quickViewModal"
-                    ><i class="fi-rs-eye"></i></a>
-                    <a
-                      aria-label="Add To Wishlist"
-                      class="action-btn hover-up"
-                      href="shop-wishlist.html"
-                    ><i class="fi-rs-heart"></i></a>
-                    <a
-                      aria-label="Compare"
-                      class="action-btn hover-up"
-                      href="shop-compare.html"
-                    ><i class="fi-rs-shuffle"></i></a>
-                  </div>
-                  <div
-                    class="product-badges product-badges-position product-badges-mrg"
-                  >
-                    <span class="hot">Hot</span>
-                  </div>
-                </div>
-                <div class="product-content-wrap">
-                  <div class="product-category">
-                    <a href="shop-grid-right.html">{{this.category}}</a>
-                  </div>
-                  <h2><a href="shop-product-right.html">{{this.productName}}</a></h2>
-                  <div class="" title="90%">
-                    <span>
-                      <span>⭐{{this.rating}}</span>
-                    </span>
-                  </div>
-                  <div class="product-price">
-                    <span>₹{{this.discountPrice}}</span>
-                    <span class="old-price">₹{{this.price}}</span>
-                  </div>
-                  <div class="product-action-1 show">
-                    <a
-                      aria-label="Add To Cart"
-                      class="action-btn hover-up"
-                      href="shop-cart.html"
-                    ><i class="fi-rs-shopping-bag-add"></i></a>
+                  <div class="product-content-wrap">
+                    <div class="product-category">
+                      <a href="shop-grid-right.html">{{this.category}}</a>
+                    </div>
+                    <h2><a
+                        href="shop-product-right.html"
+                      >{{this.productName}}</a></h2>
+                    <div class="" title="90%">
+                      <span>
+                        <span>⭐{{this.rating}}</span>
+                      </span>
+                    </div>
+                    <div class="product-price">
+                      <span>₹{{this.discountPrice}}</span>
+                      <span class="old-price">₹{{this.price}}</span>
+                    </div>
+                    <div class="product-action-1 show">
+                      <a
+                        aria-label="Add To Cart"
+                        class="action-btn hover-up"
+                        href="shop-cart.html"
+                      ><i class="fi-rs-shopping-bag-add"></i></a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             {{/each}}
-            
+
           </div>
           <!--End product-grid-4-->
         </div>
         <!--En tab one (Featured)-->
-        {{!-- tab two supercars --}}
+        {{! tab two supercars }}
         <div
           class="tab-pane fade"
           id="tab-two"
@@ -216,77 +218,79 @@
         >
           <div class="row product-grid-4">
             {{#each superCars}}
-            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-              <div class="product-cart-wrap mb-30">
-                <div class="product-img-action-wrap">
-                  <div class="product-img product-img-zoom">
-                    <a href="product/view?id={{this._id}}">
-                      <img
-                        class="default-img"
-                        src="{{this.productImages.[0]}}"
-                        alt=""
-                      />
-                      <img
-                        class="hover-img"
-                        src="{{this.productImages.[1]}}"
-                        alt=""
-                      />
-                    </a>
+              <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                <div class="product-cart-wrap mb-30">
+                  <div class="product-img-action-wrap">
+                    <div class="product-img product-img-zoom">
+                      <a href="product/view?id={{this._id}}">
+                        <img
+                          class="default-img"
+                          src="{{this.productImages.[0]}}"
+                          alt=""
+                        />
+                        <img
+                          class="hover-img"
+                          src="{{this.productImages.[1]}}"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="product-action-1">
+                      <a
+                        aria-label="Quick view"
+                        class="action-btn hover-up"
+                        data-bs-toggle="modal"
+                        data-bs-target="#quickViewModal"
+                      ><i class="fi-rs-eye"></i></a>
+                      <a
+                        aria-label="Add To Wishlist"
+                        class="action-btn hover-up"
+                        href="shop-wishlist.html"
+                      ><i class="fi-rs-heart"></i></a>
+                      <a
+                        aria-label="Compare"
+                        class="action-btn hover-up"
+                        href="shop-compare.html"
+                      ><i class="fi-rs-shuffle"></i></a>
+                    </div>
+                    <div
+                      class="product-badges product-badges-position product-badges-mrg"
+                    >
+                      <span class="hot">Hot</span>
+                    </div>
                   </div>
-                  <div class="product-action-1">
-                    <a
-                      aria-label="Quick view"
-                      class="action-btn hover-up"
-                      data-bs-toggle="modal"
-                      data-bs-target="#quickViewModal"
-                    ><i class="fi-rs-eye"></i></a>
-                    <a
-                      aria-label="Add To Wishlist"
-                      class="action-btn hover-up"
-                      href="shop-wishlist.html"
-                    ><i class="fi-rs-heart"></i></a>
-                    <a
-                      aria-label="Compare"
-                      class="action-btn hover-up"
-                      href="shop-compare.html"
-                    ><i class="fi-rs-shuffle"></i></a>
-                  </div>
-                  <div
-                    class="product-badges product-badges-position product-badges-mrg"
-                  >
-                    <span class="hot">Hot</span>
-                  </div>
-                </div>
-                <div class="product-content-wrap">
-                  <div class="product-category">
-                    <a href="shop-grid-right.html">{{this.category}}</a>
-                  </div>
-                  <h2><a href="shop-product-right.html">{{this.productName}}</a></h2>
-                  <div class="rating-result" title="90%">
-                    <span>
-                      <span>⭐{{this.rating}}</span>
-                    </span>
-                  </div>
-                  <div class="product-price">
-                    <span>₹{{this.discountPrice}}</span>
-                    <span class="old-price">{{this.price}}</span>
-                  </div>
-                  <div class="product-action-1 show">
-                    <a
-                      aria-label="Add To Cart"
-                      class="action-btn hover-up"
-                      href="shop-cart.html"
-                    ><i class="fi-rs-shopping-bag-add"></i></a>
+                  <div class="product-content-wrap">
+                    <div class="product-category">
+                      <a href="shop-grid-right.html">{{this.category}}</a>
+                    </div>
+                    <h2><a
+                        href="shop-product-right.html"
+                      >{{this.productName}}</a></h2>
+                    <div class="rating-result" title="90%">
+                      <span>
+                        <span>⭐{{this.rating}}</span>
+                      </span>
+                    </div>
+                    <div class="product-price">
+                      <span>₹{{this.discountPrice}}</span>
+                      <span class="old-price">{{this.price}}</span>
+                    </div>
+                    <div class="product-action-1 show">
+                      <a
+                        aria-label="Add To Cart"
+                        class="action-btn hover-up"
+                        href="shop-cart.html"
+                      ><i class="fi-rs-shopping-bag-add"></i></a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             {{/each}}
           </div>
           <!--End product-grid-4-->
         </div>
         <!--En tab two (Popular)-->
-        {{!-- tab three JDM cars --}}
+        {{! tab three JDM cars }}
         <div
           class="tab-pane fade"
           id="tab-three"
@@ -295,71 +299,71 @@
         >
           <div class="row product-grid-4">
             {{#each JDMCars}}
-            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-              <div class="product-cart-wrap mb-30">
-                <div class="product-img-action-wrap">
-                  <div class="product-img product-img-zoom">
-                    <a href="product/view?id={{this._id}}">
-                      <img
-                        class="default-img"
-                        src="{{this.productImages.[0]}}"
-                        alt=""
-                      />
-                      <img
-                        class="hover-img"
-                        src="{{this.productImages.[1]}}"
-                        alt=""
-                      />
-                    </a>
+              <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                <div class="product-cart-wrap mb-30">
+                  <div class="product-img-action-wrap">
+                    <div class="product-img product-img-zoom">
+                      <a href="product/view?id={{this._id}}">
+                        <img
+                          class="default-img"
+                          src="{{this.productImages.[0]}}"
+                          alt=""
+                        />
+                        <img
+                          class="hover-img"
+                          src="{{this.productImages.[1]}}"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div class="product-action-1">
+                      <a
+                        aria-label="Quick view"
+                        class="action-btn hover-up"
+                        data-bs-toggle="modal"
+                        data-bs-target="#quickViewModal"
+                      ><i class="fi-rs-eye"></i></a>
+                      <a
+                        aria-label="Add To Wishlist"
+                        class="action-btn hover-up"
+                        href="shop-wishlist.html"
+                      ><i class="fi-rs-heart"></i></a>
+                      <a
+                        aria-label="Compare"
+                        class="action-btn hover-up"
+                        href="shop-compare.html"
+                      ><i class="fi-rs-shuffle"></i></a>
+                    </div>
+                    <div
+                      class="product-badges product-badges-position product-badges-mrg"
+                    >
+                      <span class="hot">Hot</span>
+                    </div>
                   </div>
-                  <div class="product-action-1">
-                    <a
-                      aria-label="Quick view"
-                      class="action-btn hover-up"
-                      data-bs-toggle="modal"
-                      data-bs-target="#quickViewModal"
-                    ><i class="fi-rs-eye"></i></a>
-                    <a
-                      aria-label="Add To Wishlist"
-                      class="action-btn hover-up"
-                      href="shop-wishlist.html"
-                    ><i class="fi-rs-heart"></i></a>
-                    <a
-                      aria-label="Compare"
-                      class="action-btn hover-up"
-                      href="shop-compare.html"
-                    ><i class="fi-rs-shuffle"></i></a>
-                  </div>
-                  <div
-                    class="product-badges product-badges-position product-badges-mrg"
-                  >
-                    <span class="hot">Hot</span>
-                  </div>
-                </div>
-                <div class="product-content-wrap">
-                  <div class="product-category">
-                    <a href="shop-grid-right.html">{{this.category}}</a>
-                  </div>
-                  <h2><a href="shop-product-right.html">{{this.name}}</a></h2>
-                  <div class="rating-result" title="90%">
-                    <span>
-                      <span>⭐{{this.rating}}</span>
-                    </span>
-                  </div>
-                  <div class="product-price">
-                    <span>₹{{this.discountPrice}}</span>
-                    <span class="old-price">{{this.price}}</span>
-                  </div>
-                  <div class="product-action-1 show">
-                    <a
-                      aria-label="Add To Cart"
-                      class="action-btn hover-up"
-                      href="shop-cart.html"
-                    ><i class="fi-rs-shopping-bag-add"></i></a>
+                  <div class="product-content-wrap">
+                    <div class="product-category">
+                      <a href="shop-grid-right.html">{{this.category}}</a>
+                    </div>
+                    <h2><a href="shop-product-right.html">{{this.name}}</a></h2>
+                    <div class="rating-result" title="90%">
+                      <span>
+                        <span>⭐{{this.rating}}</span>
+                      </span>
+                    </div>
+                    <div class="product-price">
+                      <span>₹{{this.discountPrice}}</span>
+                      <span class="old-price">{{this.price}}</span>
+                    </div>
+                    <div class="product-action-1 show">
+                      <a
+                        aria-label="Add To Cart"
+                        class="action-btn hover-up"
+                        href="shop-cart.html"
+                      ><i class="fi-rs-shopping-bag-add"></i></a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             {{/each}}
           </div>
           <!--End product-grid-4-->
@@ -369,20 +373,32 @@
       <!--End tab-content-->
     </div>
   </section>
+  {{! banner 2 }}
   <section class="banner-2 section-padding pb-0">
     <div class="container">
       <div class="banner-img banner-big wow fadeIn animated f-none">
-        <img src="/userAssets/imgs/banner/banner-4.png" alt="" />
+        <img
+          src="/userAssets/imgs/banner/banner-4.jpg"
+          style="filter: blur(2px) brightness(0.7); transition: 0.3s;"
+          alt="Blurred Image"
+          onmouseover="this.style.filter='brightness(1)'"
+          onmouseout="this.style.filter='brightness(0.5)'"
+        />
         <div class="banner-text d-md-block d-none">
-          <h4 class="mb-15 mt-40 text-brand">Repair Services</h4>
-          <h1 class="fw-600 mb-20">We're an Apple
-            <br />Authorised Service Provider</h1>
-          <a href="shop-grid-right.html" class="btn">Learn More
-            <i class="fi-rs-arrow-right"></i></a>
+          <h4 class="mb-15 mt-40 text-brand">Diecast Toy Cars</h4>
+          <h1 class="fw-600 mb-20">
+            Explore Premium
+            <br />Toy Car Collections
+          </h1>
+          <a href="shop-grid-right.html" class="btn">
+            Shop Now
+            <i class="fi-rs-arrow-right"></i>
+          </a>
         </div>
       </div>
     </div>
   </section>
+  {{! popular categories }}
   <section class="popular-categories section-padding mt-15 mb-25">
     <div class="container wow fadeIn animated">
       <h3 class="section-title mb-20"><span>Popular</span> Categories</h3>
@@ -399,14 +415,17 @@
                   alt=""
                 /></a>
             </figure>
-            <h5><a href="shop-grid-right.html">T-Shirt</a></h5>
+            <h5><a href="shop-grid-right.html">Super Cars</a></h5>
           </div>
           <div class="card-1">
             <figure class="img-hover-scale overflow-hidden">
               <a href="shop-grid-right.html">
-                <img src="/userAssets/imgs/shop/category-thumb-2.jpg" alt="" /></a>
+                <img
+                  src="/userAssets/imgs/shop/category-thumb-2.jpg"
+                  alt=""
+                /></a>
             </figure>
-            <h5><a href="shop-grid-right.html">Bags</a></h5>
+            <h5><a href="shop-grid-right.html">Sports Cars</a></h5>
           </div>
           <div class="card-1">
             <figure class="img-hover-scale overflow-hidden">
@@ -415,7 +434,7 @@
                   alt=""
                 /></a>
             </figure>
-            <h5><a href="shop-grid-right.html">Sandan</a></h5>
+            <h5><a href="shop-grid-right.html">JDM Cars</a></h5>
           </div>
           <div class="card-1">
             <figure class="img-hover-scale overflow-hidden">
@@ -424,7 +443,7 @@
                   alt=""
                 /></a>
             </figure>
-            <h5><a href="shop-grid-right.html">Scarf Cap</a></h5>
+            <h5><a href="shop-grid-right.html">Muscle Cars</a></h5>
           </div>
           <div class="card-1">
             <figure class="img-hover-scale overflow-hidden">
@@ -433,7 +452,7 @@
                   alt=""
                 /></a>
             </figure>
-            <h5><a href="shop-grid-right.html">Shoes</a></h5>
+            <h5><a href="shop-grid-right.html">SUVs</a></h5>
           </div>
           <div class="card-1">
             <figure class="img-hover-scale overflow-hidden">
@@ -442,159 +461,68 @@
                   alt=""
                 /></a>
             </figure>
-            <h5><a href="shop-grid-right.html">Pillowcase</a></h5>
-          </div>
-          <div class="card-1">
-            <figure class="img-hover-scale overflow-hidden">
-              <a href="shop-grid-right.html"><img
-                  src="/userAssets/imgs/shop/category-thumb-7.jpg"
-                  alt=""
-                /></a>
-            </figure>
-            <h5><a href="shop-grid-right.html">Jumpsuits</a></h5>
-          </div>
-          <div class="card-1">
-            <figure class="img-hover-scale overflow-hidden">
-              <a href="shop-grid-right.html"><img
-                  src="/userAssets/imgs/shop/category-thumb-8.jpg"
-                  alt=""
-                /></a>
-            </figure>
-            <h5><a href="shop-grid-right.html">Hats</a></h5>
+            <h5><a href="shop-grid-right.html">Special Edition</a></h5>
           </div>
         </div>
       </div>
     </div>
   </section>
+  {{! banners }}
   <section class="banners mb-15">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <div class="banner-img wow fadeIn animated">
-            <img src="/userAssets/imgs/banner/banner-1.png" alt="" />
+            <img
+              src="/userAssets/imgs/banner/banner-1.png"
+              style="filter: blur(1px) brightness(0.9); transition: 0.3s;"
+              alt="Blurred Image"
+              onmouseover="this.style.filter='brightness(1)'"
+              onmouseout="this.style.filter='brightness(0.9)'"
+            />
             <div class="banner-text">
-              <span>Smart Offer</span>
-              <h4>Save 20% on <br />Woman Bag</h4>
+              <span>Collector’s Deal</span>
+              <h4>Save 20% on <br />Diecast Models</h4>
               <a href="shop-grid-right.html">Shop Now
                 <i class="fi-rs-arrow-right"></i></a>
             </div>
           </div>
         </div>
+
         <div class="col-lg-4 col-md-6">
           <div class="banner-img wow fadeIn animated">
-            <img src="/userAssets/imgs/banner/banner-2.png" alt="" />
+            <img
+              src="/userAssets/imgs/banner/banner-2.png"
+              style="filter: blur(1px) brightness(0.9); transition: 0.3s;"
+              alt="Blurred Image"
+              onmouseover="this.style.filter='brightness(1)'"
+              onmouseout="this.style.filter='brightness(0.9)'"
+            />
             <div class="banner-text">
-              <span>Sale off</span>
-              <h4>Great Summer <br />Collection</h4>
+              <span>Limited Sale</span>
+              <h4>Premium Scale <br />Car Collection</h4>
               <a href="shop-grid-right.html">Shop Now
                 <i class="fi-rs-arrow-right"></i></a>
             </div>
           </div>
         </div>
+
         <div class="col-lg-4 d-md-none d-lg-flex">
           <div class="banner-img wow fadeIn animated mb-sm-0">
-            <img src="/userAssets/imgs/banner/banner-3.png" alt="" />
+            <img src="/userAssets/imgs/banner/banner-3.png" />
             <div class="banner-text">
               <span>New Arrivals</span>
-              <h4>Shop Today’s <br />Deals & Offers</h4>
+              <h4>Latest Diecast <br />Supercars</h4>
               <a href="shop-grid-right.html">Shop Now
                 <i class="fi-rs-arrow-right"></i></a>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </section>
-
-  <section class="deals section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 deal-co">
-          <div
-            class="deal wow fadeIn animated mb-md-4 mb-sm-4 mb-lg-0"
-            style="background-image: url('/userAssets/imgs/banner/menu-banner-7.jpg');"
-          >
-            <div class="deal-top">
-              <h2 class="text-brand">Deal of the Day</h2>
-              <h5>Limited quantities.</h5>
-            </div>
-            <div class="deal-content">
-              <h6 class="product-title"><a href="shop-product-right.html">Summer
-                  Collection New Morden Design</a></h6>
-              <div class="product-price"><span
-                  class="new-price"
-                >$139.00</span><span class="old-price">$160.99</span></div>
-            </div>
-            <div class="deal-bottom">
-              <p>Hurry Up! Offer End In:</p>
-              <div
-                class="deals-countdown"
-                data-countdown="2025/03/25 00:00:00"
-              ></div>
-              <a href="shop-grid-right.html" class="btn hover-up">Shop Now
-                <i class="fi-rs-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 deal-co">
-          <div
-            class="deal wow fadeIn animated"
-            style="background-image: url('/userAssets/imgs/banner/menu-banner-8.jpg');"
-          >
-            <div class="deal-top">
-              <h2 class="text-brand">Men Clothing</h2>
-              <h5>Shirt & Bag</h5>
-            </div>
-            <div class="deal-content">
-              <h6 class="product-title"><a href="shop-product-right.html">Try
-                  something new on vacation</a></h6>
-              <div class="product-price"><span
-                  class="new-price"
-                >$178.00</span><span class="old-price">$256.99</span></div>
-            </div>
-            <div class="deal-bottom">
-              <p>Hurry Up! Offer End In:</p>
-              <div
-                class="deals-countdown"
-                data-countdown="2026/03/25 00:00:00"
-              ></div>
-              <a href="shop-grid-right.html" class="btn hover-up">Shop Now
-                <i class="fi-rs-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section-padding">
-  <div class="container">
-    <h3 class="section-title mb-20 wow fadeIn animated">
-      <span>Featured</span> Brands
-    </h3>
-
-    <div class="carausel-6-columns-cover position-relative wow fadeIn animated">
-      <div
-        class="slider-arrow slider-arrow-2 carausel-6-columns-arrow"
-        id="carausel-6-columns-3-arrows"
-      ></div>
-
-      <div class="carausel-6-columns text-center" id="carausel-6-columns-3">
-        {{#each brandData}}
-          <div class="brand-logo">
-            <a href="{{link}}">
-              <img
-                class="img-grey-hover"
-                src="{{image}}"
-                alt="{{name}}"
-              />
-            </a>
-          </div>
-        {{/each}}
-      </div>
-    </div>
-  </div>
-</section>
-{{!-- New arrivals --}}
+  {{! New arrivals }}
   <section class="bg-grey-9 section-padding">
     <div class="container pt-25 pb-25">
       <div class="heading-tab d-flex">
@@ -633,71 +561,73 @@
                   class="carausel-4-columns carausel-arrow-center"
                   id="carausel-4-columns"
                 >
-                {{#each newArrivals}}
-                  <div class="product-cart-wrap">
-                    <div class="product-img-action-wrap">
-                      <div class="product-img product-img-zoom">
-                        <a href="product/view?id={{this._id}}">
-                          <img
-                            class="default-img"
-                            src="{{this.productImages.[0]}}"
-                            alt=""
-                          />
-                          <img
-                            class="hover-img"
+                  {{#each newArrivals}}
+                    <div class="product-cart-wrap">
+                      <div class="product-img-action-wrap">
+                        <div class="product-img product-img-zoom">
+                          <a href="product/view?id={{this._id}}">
+                            <img
+                              class="default-img"
+                              src="{{this.productImages.[0]}}"
+                              alt=""
+                            />
+                            <img
+                              class="hover-img"
                               src="{{this.productImages.[1]}}"
-                            alt=""
-                          />
-                        </a>
-                      </div>
-                      <div class="product-action-1">
-                        <a
-                          aria-label="Quick view"
-                          class="action-btn small hover-up"
-                          data-bs-toggle="modal"
-                          data-bs-target="#quickViewModal"
+                              alt=""
+                            />
+                          </a>
+                        </div>
+                        <div class="product-action-1">
+                          <a
+                            aria-label="Quick view"
+                            class="action-btn small hover-up"
+                            data-bs-toggle="modal"
+                            data-bs-target="#quickViewModal"
+                          >
+                            <i class="fi-rs-eye"></i></a>
+                          <a
+                            aria-label="Add To Wishlist"
+                            class="action-btn small hover-up"
+                            href="shop-wishlist.html"
+                          ><i class="fi-rs-heart"></i></a>
+                          <a
+                            aria-label="Compare"
+                            class="action-btn small hover-up"
+                            href="shop-compare.html"
+                          ><i class="fi-rs-shuffle"></i></a>
+                        </div>
+                        <div
+                          class="product-badges product-badges-position product-badges-mrg"
                         >
-                          <i class="fi-rs-eye"></i></a>
-                        <a
-                          aria-label="Add To Wishlist"
-                          class="action-btn small hover-up"
-                          href="shop-wishlist.html"
-                        ><i class="fi-rs-heart"></i></a>
-                        <a
-                          aria-label="Compare"
-                          class="action-btn small hover-up"
-                          href="shop-compare.html"
-                        ><i class="fi-rs-shuffle"></i></a>
+                          <span class="hot">Hot</span>
+                        </div>
                       </div>
-                      <div
-                        class="product-badges product-badges-position product-badges-mrg"
-                      >
-                        <span class="hot">Hot</span>
-                      </div>
-                    </div>
-                    <div class="product-content-wrap">
-                      <div class="product-category">
-                        <a href="shop-grid-right.html">{{this.category}}</a>
-                      </div>
-                      <h2><a href="shop-product-right.html">{{this.productName}}</a></h2>
-                      <div class="rating-result" title="90%">
-                        <span>
-                          <span>{{this.rating}}</span>
-                        </span>
-                      </div>
-                      <div class="product-price">
-                        <span>₹{{this.discountPrice}}</span>
-                        <span class="old-price">₹{{this.price}}</span>
-                      </div>
-                      <div class="product-action-1 show">
-                        <a
-                          aria-label="Add To Cart"
-                          class="action-btn hover-up"
-                          href="shop-cart.html"
-                        ><i class="fi-rs-shopping-bag-add"></i></a>
+                      <div class="product-content-wrap">
+                        <div class="product-category">
+                          <a href="shop-grid-right.html">{{this.category}}</a>
+                        </div>
+                        <h2><a
+                            href="shop-product-right.html"
+                          >{{this.productName}}</a></h2>
+                        <div class="rating-result" title="90%">
+                          <span>
+                            <span>{{this.rating}}</span>
+                          </span>
+                        </div>
+                        <div class="product-price">
+                          <span>₹{{this.discountPrice}}</span>
+                          <span class="old-price">₹{{this.price}}</span>
+                        </div>
+                        <div class="product-action-1 show">
+                          <a
+                            aria-label="Add To Cart"
+                            class="action-btn hover-up"
+                            href="shop-cart.html"
+                          ><i class="fi-rs-shopping-bag-add"></i></a>
+                        </div>
                       </div>
                     </div>
-                  </div>
                   {{/each}}
                 </div>
               </div>
@@ -1388,6 +1318,108 @@
           <!--End tab-content-->
         </div>
         <!--End Col-lg-9-->
+      </div>
+    </div>
+  </section>
+  {{! deals }}
+  <section class="deals section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 deal-co">
+          <div
+            class="deal wow fadeIn animated mb-md-4 mb-sm-4 mb-lg-0"
+            style="background-image: url('/userAssets/imgs/banner/menu-banner-7.jpg');"
+          >
+            <div class="deal-top">
+              <h2 class="text-brand">Deal of the Day</h2>
+              <h5>Limited stock available</h5>
+            </div>
+            <div class="deal-content">
+              <h6 class="product-title">
+                <a href="shop-product-right.html">
+                  Premium Diecast Supercar 1:18 Scale
+                </a>
+              </h6>
+              <div class="product-price">
+                <span class="new-price">₹4,999</span>
+                <span class="old-price">₹6,499</span>
+              </div>
+            </div>
+            <div class="deal-bottom">
+              <p>Hurry up! Deal ends in:</p>
+              <div
+                class="deals-countdown"
+                data-countdown="2025/03/25 00:00:00"
+              ></div>
+              <a href="shop-grid-right.html" class="btn hover-up">
+                Shop Now
+                <i class="fi-rs-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 deal-co">
+          <div
+            class="deal wow fadeIn animated"
+            style="background-image: url('/userAssets/imgs/banner/menu-banner-8.jpg');"
+          >
+            <div class="deal-top">
+              <h2 class="text-brand">Collector’s Pick</h2>
+              <h5>JDM & Muscle Cars</h5>
+            </div>
+            <div class="deal-content">
+              <h6 class="product-title">
+                <a href="shop-product-right.html">
+                  Limited Edition Diecast Model Cars
+                </a>
+              </h6>
+              <div class="product-price">
+                <span class="new-price">₹2,499</span>
+                <span class="old-price">₹3,299</span>
+              </div>
+            </div>
+            <div class="deal-bottom">
+              <p>Hurry up! Offer ends in:</p>
+              <div
+                class="deals-countdown"
+                data-countdown="2026/03/25 00:00:00"
+              ></div>
+              <a href="shop-grid-right.html" class="btn hover-up">
+                Shop Now
+                <i class="fi-rs-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{! featured brands }}
+  <section class="section-padding">
+    <div class="container">
+      <h3 class="section-title mb-20 wow fadeIn animated">
+        <span>Featured</span>
+        Brands
+      </h3>
+
+      <div
+        class="carausel-6-columns-cover position-relative wow fadeIn animated"
+      >
+        <div
+          class="slider-arrow slider-arrow-2 carausel-6-columns-arrow"
+          id="carausel-6-columns-3-arrows"
+        ></div>
+
+        <div class="carausel-6-columns text-center" id="carausel-6-columns-3">
+          {{#each brandData}}
+            <div class="brand-logo">
+              <a href="{{link}}">
+                <img class="img-grey-hover" src="{{image}}" alt="{{name}}" />
+              </a>
+            </div>
+          {{/each}}
+        </div>
       </div>
     </div>
   </section>

@@ -1,7 +1,6 @@
 import express from "express";
-import { accountDetailsPage, landingPage, loginPage, productsListingPage, signUpPage } from "../controllers/userController.js";
-import { logIn, logoutUser, signUp } from "../controllers/userAuth.js";
-import { use } from "react";
+import { accountDetailsPage, landingPage, loginPage, productListingPage, productViewPage, signUpPage, updateUserDetails, wishlistPage } from "../controllers/userController.js";
+import { logIn, logoutUser, signUp } from "../controllers/userAuth.js";  
 
 const userRoutes = express.Router({ mergeParams: true });
 
@@ -19,6 +18,12 @@ userRoutes.get("/logout", logoutUser);
 
 userRoutes.get("/account-details", accountDetailsPage);
 
-userRoutes.get("/products", productsListingPage);
+userRoutes.post("/account-details", updateUserDetails);
+
+userRoutes.get("/product/view", productViewPage);
+
+userRoutes.get("/products", productListingPage);
+
+userRoutes.get("/wishlist", wishlistPage);
 
 export default userRoutes;
