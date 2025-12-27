@@ -3,7 +3,10 @@ import {
   adminAddProductPage,
   adminDashboardPage,
   adminLoginPage,
+  adminOrderDetailsPage,
+  adminOrdersListPage,
   adminProductlistPage,
+  updateOrderStatus,
 } from "../controllers/adminController.js";
 import { adminLogin } from "../controllers/adminAuth.js";
 import {
@@ -41,5 +44,10 @@ adminRoutes.post("/product-edit/:id", editProductDetails);
 
 adminRoutes.post("/product/:id/delete", deleteProduct);
 
+adminRoutes.get("/orders-list", adminOrdersListPage);
+
+adminRoutes.get("/update-order-status/:id/:status", updateOrderStatus);
+
+adminRoutes.get("/orders/:id", adminOrderDetailsPage);
 
 export default adminRoutes;

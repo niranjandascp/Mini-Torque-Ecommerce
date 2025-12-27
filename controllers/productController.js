@@ -27,8 +27,8 @@ const deleteFile = (filePath) => {
 // create Products
 export const createProduct = async (req, res) => {
   console.log("create product route working >>>>>>>>");
-  console.log("Body:", req.body);
-  console.log("Files:", req.files);
+  // console.log("Body:", req.body);
+  // console.log("Files:", req.files);
 
   try {
     const data = req.body;
@@ -108,7 +108,7 @@ export const editProductDetailsPage = async (req, res) => {
 };
 
 export const editProductDetails = async (req, res) => {
-  console.log("edit product function called >>>>>>>>>>", req.params.id, req.body);
+  // console.log("edit product function called >>>>>>>>>>", req.params.id, req.body);
   try {
     const productId = req.params.id;
     const data = req.body;
@@ -227,3 +227,4 @@ export const getProductsData = async (options = {}) => {
     throw error;
   }
 };
+

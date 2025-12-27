@@ -19,13 +19,15 @@
             <div id="news-flash" class="d-inline-block">
               <ul>
                 <li>
-                  Get great devices up to 50% off
-                  <a href="shop-grid-right.html">View details</a>
+                  Collectible diecast cars up to 40% off
+                  <a href="/products">View collection</a>
                 </li>
-                <li>Super Value Deals - Save more with coupons</li>
                 <li>
-                  Trendy 925 silver jewelry, save up 35% today
-                  <a href="shop-grid-right.html">Shop now</a>
+                  Limited Edition Models – Hot Wheels, Mini GT & More
+                </li>
+                <li>
+                  1:18 & 1:64 scale premium diecast cars – Save up to 35%
+                  <a href="/products">Shop now</a>
                 </li>
               </ul>
             </div>
@@ -34,29 +36,28 @@
 
         <!-- Right: Login -->
         <div class="col-xl-3 col-lg-4">
-  <div class="header-info header-info-right">
-    <ul>
-      {{#if loggedInUser}}
-        <!-- If user is logged in -->
-        <li>
-          <i class="fi-rs-user"></i>
-          <a href="/account-details">Welcome, {{loggedInUser.name}}</a>
-        </li>
-        <li>
-          <i class="fi-rs-logout"></i>
-          <a href="/logout">Logout</a>
-        </li>
-      {{else}}
-        <!-- If user is not logged in -->
-        <li>
-          <i class="fi-rs-user"></i>
-          <a href="/login">Log In / Sign Up</a>
-        </li>
-      {{/if}}
-    </ul>
-  </div>
-</div>
-
+          <div class="header-info header-info-right">
+            <ul>
+              {{#if loggedInUser}}
+                <!-- If user is logged in -->
+                <li>
+                  <i class="fi-rs-user"></i>
+                  <a href="/account-details">Welcome, {{loggedInUser.name}}</a>
+                </li>
+                <li>
+                  <i class="fi-rs-logout"></i>
+                  <a href="/logout">Logout</a>
+                </li>
+              {{else}}
+                <!-- If user is not logged in -->
+                <li>
+                  <i class="fi-rs-user"></i>
+                  <a href="/login">Log In / Sign Up</a>
+                </li>
+              {{/if}}
+            </ul>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -80,7 +81,7 @@
           <div class="main-categori-wrap d-none d-lg-block">
             <a class="categori-button-active" href="#">
               <span class="fi-rs-apps"></span>
-             Mini Torque
+              Mini Torque
             </a>
           </div>
           <div
@@ -90,8 +91,8 @@
               <ul>
                 <li><a class="active" href="/">Home</a></li>
                 <li><a href="/products">Products</a></li>
-                {{!-- <li><a href="/order-history">Orders</a></li> --}}
-               
+                {{! <li><a href="/order-history">Orders</a></li> }}
+
               </ul>
             </nav>
           </div>
@@ -178,7 +179,7 @@
             <li class="menu-item"><a
                 href="shop-grid-right.html"
               >Products</a></li>
-              
+
           </ul>
         </nav>
       </div>

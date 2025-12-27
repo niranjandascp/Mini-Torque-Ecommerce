@@ -121,7 +121,7 @@
             >JDM Cars</button>
           </li>
         </ul>
-        <a href="#" class="view-more d-none d-md-flex">View More<i
+        <a href="/products" class="view-more d-none d-md-flex">View More<i
             class="fi-rs-angle-double-small-right"
           ></i></a>
       </div>
@@ -163,7 +163,7 @@
                       <a
                         aria-label="Add To Wishlist"
                         class="action-btn hover-up"
-                        href="shop-wishlist.html"
+                        href="/wishlist"
                       ><i class="fi-rs-heart"></i></a>
                       <a
                         aria-label="Compare"
@@ -194,11 +194,37 @@
                       <span class="old-price">₹{{this.price}}</span>
                     </div>
                     <div class="product-action-1 show">
-                      <a
-                        aria-label="Add To Cart"
-                        class="action-btn hover-up"
-                        href="shop-cart.html"
-                      ><i class="fi-rs-shopping-bag-add"></i></a>
+                      <form action="/add-to-cart" method="post">
+                        <input
+                          type="hidden"
+                          name="productId"
+                          value="{{this.productId}}"
+                        />
+
+                        <button
+                          type="submit"
+                          aria-label="Add To Cart"
+                          style="
+                all: unset;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #f0f0f0;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+              "
+                          onmouseover="this.style.backgroundColor='#4caf50'; this.querySelector('i').style.color='#fff';"
+                          onmouseout="this.style.backgroundColor='#f0f0f0'; this.querySelector('i').style.color='#333';"
+                        >
+                          <i
+                            class="fi-rs-shopping-bag-add"
+                            style="color: #333; font-size: 18px;"
+                          ></i>
+                        </button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -245,7 +271,7 @@
                       <a
                         aria-label="Add To Wishlist"
                         class="action-btn hover-up"
-                        href="shop-wishlist.html"
+                        href="/wishlist"
                       ><i class="fi-rs-heart"></i></a>
                       <a
                         aria-label="Compare"
@@ -275,12 +301,39 @@
                       <span>₹{{this.discountPrice}}</span>
                       <span class="old-price">{{this.price}}</span>
                     </div>
+
                     <div class="product-action-1 show">
-                      <a
-                        aria-label="Add To Cart"
-                        class="action-btn hover-up"
-                        href="shop-cart.html"
-                      ><i class="fi-rs-shopping-bag-add"></i></a>
+                      <form action="/add-to-cart" method="post">
+                        <input
+                          type="hidden"
+                          name="productId"
+                          value="{{this.productId}}"
+                        />
+
+                        <button
+                          type="submit"
+                          aria-label="Add To Cart"
+                          style="
+                all: unset;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #f0f0f0;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+              "
+                          onmouseover="this.style.backgroundColor='#4caf50'; this.querySelector('i').style.color='#fff';"
+                          onmouseout="this.style.backgroundColor='#f0f0f0'; this.querySelector('i').style.color='#333';"
+                        >
+                          <i
+                            class="fi-rs-shopping-bag-add"
+                            style="color: #333; font-size: 18px;"
+                          ></i>
+                        </button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -326,7 +379,7 @@
                       <a
                         aria-label="Add To Wishlist"
                         class="action-btn hover-up"
-                        href="shop-wishlist.html"
+                        href="/wishlist"
                       ><i class="fi-rs-heart"></i></a>
                       <a
                         aria-label="Compare"
@@ -355,11 +408,37 @@
                       <span class="old-price">{{this.price}}</span>
                     </div>
                     <div class="product-action-1 show">
-                      <a
-                        aria-label="Add To Cart"
-                        class="action-btn hover-up"
-                        href="shop-cart.html"
-                      ><i class="fi-rs-shopping-bag-add"></i></a>
+                      <form action="/add-to-cart" method="post">
+                        <input
+                          type="hidden"
+                          name="productId"
+                          value="{{this.productId}}"
+                        />
+
+                        <button
+                          type="submit"
+                          aria-label="Add To Cart"
+                          style="
+                all: unset;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #f0f0f0;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+              "
+                          onmouseover="this.style.backgroundColor='#4caf50'; this.querySelector('i').style.color='#fff';"
+                          onmouseout="this.style.backgroundColor='#f0f0f0'; this.querySelector('i').style.color='#333';"
+                        >
+                          <i
+                            class="fi-rs-shopping-bag-add"
+                            style="color: #333; font-size: 18px;"
+                          ></i>
+                        </button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -589,7 +668,7 @@
                           <a
                             aria-label="Add To Wishlist"
                             class="action-btn small hover-up"
-                            href="shop-wishlist.html"
+                            href="/wishlist"
                           ><i class="fi-rs-heart"></i></a>
                           <a
                             aria-label="Compare"
@@ -623,7 +702,7 @@
                           <a
                             aria-label="Add To Cart"
                             class="action-btn hover-up"
-                            href="shop-cart.html"
+                            href="cart"
                           ><i class="fi-rs-shopping-bag-add"></i></a>
                         </div>
                       </div>
@@ -677,7 +756,7 @@
                         <a
                           aria-label="Add To Wishlist"
                           class="action-btn small hover-up"
-                          href="shop-wishlist.html"
+                          href="/wishlist"
                         ><i class="fi-rs-heart"></i></a>
                         <a
                           aria-label="Compare"
@@ -710,7 +789,7 @@
                         <a
                           aria-label="Add To Cart"
                           class="action-btn hover-up"
-                          href="shop-cart.html"
+                          href="cart"
                         ><i class="fi-rs-shopping-bag-add"></i></a>
                       </div>
                     </div>
@@ -742,7 +821,7 @@
                         <a
                           aria-label="Add To Wishlist"
                           class="action-btn small hover-up"
-                          href="shop-wishlist.html"
+                          href="/wishlist"
                         ><i class="fi-rs-heart"></i></a>
                         <a
                           aria-label="Compare"
@@ -774,7 +853,7 @@
                         <a
                           aria-label="Add To Cart"
                           class="action-btn hover-up"
-                          href="shop-cart.html"
+                          href="cart"
                         ><i class="fi-rs-shopping-bag-add"></i></a>
                       </div>
                     </div>
@@ -806,7 +885,7 @@
                         <a
                           aria-label="Add To Wishlist"
                           class="action-btn small hover-up"
-                          href="shop-wishlist.html"
+                          href="/wishlist"
                         ><i class="fi-rs-heart"></i></a>
                         <a
                           aria-label="Compare"
@@ -838,7 +917,7 @@
                         <a
                           aria-label="Add To Cart"
                           class="action-btn hover-up"
-                          href="shop-cart.html"
+                          href="cart"
                         ><i class="fi-rs-shopping-bag-add"></i></a>
                       </div>
                     </div>
@@ -870,7 +949,7 @@
                         <a
                           aria-label="Add To Wishlist"
                           class="action-btn small hover-up"
-                          href="shop-wishlist.html"
+                          href="/wishlist"
                         ><i class="fi-rs-heart"></i></a>
                         <a
                           aria-label="Compare"
@@ -902,7 +981,7 @@
                         <a
                           aria-label="Add To Cart"
                           class="action-btn hover-up"
-                          href="shop-cart.html"
+                          href="cart"
                         ><i class="fi-rs-shopping-bag-add"></i></a>
                       </div>
                     </div>
@@ -934,7 +1013,7 @@
                         <a
                           aria-label="Add To Wishlist"
                           class="action-btn small hover-up"
-                          href="shop-wishlist.html"
+                          href="/wishlist"
                         ><i class="fi-rs-heart"></i></a>
                         <a
                           aria-label="Compare"
@@ -966,7 +1045,7 @@
                         <a
                           aria-label="Add To Cart"
                           class="action-btn hover-up"
-                          href="shop-cart.html"
+                          href="cart"
                         ><i class="fi-rs-shopping-bag-add"></i></a>
                       </div>
                     </div>
@@ -1018,7 +1097,7 @@
                         <a
                           aria-label="Add To Wishlist"
                           class="action-btn small hover-up"
-                          href="shop-wishlist.html"
+                          href="/wishlist"
                         ><i class="fi-rs-heart"></i></a>
                         <a
                           aria-label="Compare"
@@ -1050,7 +1129,7 @@
                         <a
                           aria-label="Add To Cart"
                           class="action-btn hover-up"
-                          href="shop-cart.html"
+                          href="cart"
                         ><i class="fi-rs-shopping-bag-add"></i></a>
                       </div>
                     </div>
@@ -1082,7 +1161,7 @@
                         <a
                           aria-label="Add To Wishlist"
                           class="action-btn small hover-up"
-                          href="shop-wishlist.html"
+                          href="/wishlist"
                         ><i class="fi-rs-heart"></i></a>
                         <a
                           aria-label="Compare"
@@ -1114,7 +1193,7 @@
                         <a
                           aria-label="Add To Cart"
                           class="action-btn hover-up"
-                          href="shop-cart.html"
+                          href="cart"
                         ><i class="fi-rs-shopping-bag-add"></i></a>
                       </div>
                     </div>
@@ -1146,7 +1225,7 @@
                         <a
                           aria-label="Add To Wishlist"
                           class="action-btn small hover-up"
-                          href="shop-wishlist.html"
+                          href="/wishlist"
                         ><i class="fi-rs-heart"></i></a>
                         <a
                           aria-label="Compare"
@@ -1178,7 +1257,7 @@
                         <a
                           aria-label="Add To Cart"
                           class="action-btn hover-up"
-                          href="shop-cart.html"
+                          href="cart"
                         ><i class="fi-rs-shopping-bag-add"></i></a>
                       </div>
                     </div>
@@ -1210,7 +1289,7 @@
                         <a
                           aria-label="Add To Wishlist"
                           class="action-btn small hover-up"
-                          href="shop-wishlist.html"
+                          href="/wishlist"
                         ><i class="fi-rs-heart"></i></a>
                         <a
                           aria-label="Compare"
@@ -1242,7 +1321,7 @@
                         <a
                           aria-label="Add To Cart"
                           class="action-btn hover-up"
-                          href="shop-cart.html"
+                          href="cart"
                         ><i class="fi-rs-shopping-bag-add"></i></a>
                       </div>
                     </div>
@@ -1274,7 +1353,7 @@
                         <a
                           aria-label="Add To Wishlist"
                           class="action-btn small hover-up"
-                          href="shop-wishlist.html"
+                          href="/wishlist"
                         ><i class="fi-rs-heart"></i></a>
                         <a
                           aria-label="Compare"
@@ -1306,7 +1385,7 @@
                         <a
                           aria-label="Add To Cart"
                           class="action-btn hover-up"
-                          href="shop-cart.html"
+                          href="cart"
                         ><i class="fi-rs-shopping-bag-add"></i></a>
                       </div>
                     </div>
