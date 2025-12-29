@@ -153,7 +153,7 @@
                         />
                       </a>
                     </div>
-                    <div class="product-action-1">
+                    {{!-- <div class="product-action-1">
                       <a
                         aria-label="Quick view"
                         class="action-btn hover-up"
@@ -170,7 +170,70 @@
                         class="action-btn hover-up"
                         href="shop-compare.html"
                       ><i class="fi-rs-shuffle"></i></a>
-                    </div>
+                    </div> --}}
+                    <div class="product-action-1">
+                      {{!-- <a
+                        aria-label="Quick view"
+                        class="action-btn hover-up"
+                        data-bs-toggle="modal"
+                        data-bs-target="#quickViewModal"
+                        href="/wishlist"
+                      >
+                        <i class="fi-rs-eye"></i>
+                      </a> --}}
+
+                      {{! ✅ ADD WISHLIST HERE }}
+                      <form
+                        action="/wishlist/add"
+                        method="post"
+                        style="display:inline;"
+                      >
+                        <input
+                          type="hidden"
+                          name="productId"
+                          value="{{this.productId}}"
+                        />
+                        {{!-- <button
+                          type="submit"
+                          aria-label="Add To Wishlist"
+                          class="action-btn"
+                        >
+                          <i class="fi-rs-heart"></i>
+                        </button> --}}
+                                       <button
+                          type="submit"
+                          aria-label="Add To Wishlist"
+                          style="
+                all: unset;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #f0f0f0;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+              "
+                          onmouseover="this.style.backgroundColor='#4caf50'; this.querySelector('i').style.color='#fff';"
+                          onmouseout="this.style.backgroundColor='#f0f0f0'; this.querySelector('i').style.color='#333';"
+                        >
+                          <i
+                            class="fi-rs-heart"
+                            style="color: #333; font-size: 18px;"
+                          ></i>
+                        </button>
+                      </form>
+
+                      {{!-- <a
+                        aria-label="Compare"
+                        class="action-btn hover-up"
+                        href="shop-compare.html"
+                      >
+                        <i class="fi-rs-shuffle"></i>
+                      </a> --}}
+                    </div> 
+
                     <div
                       class="product-badges product-badges-position product-badges-mrg"
                     >
@@ -665,11 +728,29 @@
                             data-bs-target="#quickViewModal"
                           >
                             <i class="fi-rs-eye"></i></a>
-                          <a
+                          {{! <a
                             aria-label="Add To Wishlist"
                             class="action-btn small hover-up"
                             href="/wishlist"
-                          ><i class="fi-rs-heart"></i></a>
+                          ><i class="fi-rs-heart"></i></a> }}
+                          <form
+                            action="/wishlist.html"
+                            method="post"
+                            style="display:inline;"
+                          >
+                            <input
+                              type="hidden"
+                              name="productId"
+                              value="{{this._id}}"
+                            />
+                            <button
+                              type="submit"
+                              class="action-btn small hover-up"
+                            >
+                              <i class="fi-rs-heart"></i>
+                            </button>
+                          </form>
+
                           <a
                             aria-label="Compare"
                             class="action-btn small hover-up"

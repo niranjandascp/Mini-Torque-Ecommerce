@@ -14,13 +14,93 @@ export const adminLoginPage = async (req, res) => {
 
 export const adminDashboardPage = async (req, res) => {
   try {
-    // Render dashboard
+    const db = await connectDB();
+
+    // Get current year boundaries
+    const currentYear = new Date().getFullYear();
+    const yearStart = new Date(currentYear, 0, 1);
+    const yearEnd = new Date(currentYear, 11, 31, 23, 59, 59);
+
+    // Fetch all necessary data in parallel for better performance
+    const [
+      totalRevenue,
+      totalOrders,
+      totalProducts,
+      yearlyUsers,
+      recentOrders
+    ] = await Promise.all([
+      // Total Revenue from all paid/delivered orders
+      db.collection(collection.ORDERS_COLLECTION)
+        .aggregate([
+          { 
+            $match: { 
+              status: { $in: ["Paid", "Delivered", "Shipped"] } 
+            } 
+          },
+          { 
+            $group: { 
+              _id: null, 
+              totalRevenue: { $sum: "$total" } 
+            } 
+          }
+        ])
+        .toArray(),
+
+      // Total number of orders
+      db.collection(collection.ORDERS_COLLECTION).countDocuments(),
+
+      // Total number of products
+      db.collection(collection.PRODUCTS_COLLECTION).countDocuments(),
+
+      // Number of users who ordered this year
+      db.collection(collection.ORDERS_COLLECTION)
+        .aggregate([
+          { 
+            $match: { 
+              createdAt: { $gte: yearStart, $lte: yearEnd } 
+            } 
+          },
+          { 
+            $group: { 
+              _id: "$userId" 
+            } 
+          },
+          { 
+            $count: "uniqueUsers" 
+          }
+        ])
+        .toArray(),
+
+      // Recent 5 orders for dashboard preview
+      db.collection(collection.ORDERS_COLLECTION)
+        .find({})
+        .sort({ createdAt: -1 })
+        .limit(5)
+        .toArray()
+    ]);
+
+    // Extract revenue and yearly users count
+    const revenue = totalRevenue[0]?.totalRevenue || 0;
+    const yearlyOrderedUsers = yearlyUsers[0]?.uniqueUsers || 0;
+
+    // Prepare dashboard statistics
+    const stats = {
+      totalRevenue: revenue.toFixed(2),
+      totalOrders,
+      totalProducts,
+      yearlyOrderedUsers,
+      recentOrders
+    };
+
+    // Render dashboard with statistics
     res.render("admin/dashboard", {
       layout: "admin",
       title: "Admin Dashboard",
+      stats
     });
+
   } catch (error) {
-    console.log(error);
+    console.error("Error loading dashboard:", error);
     res.status(500).send("Something went wrong loading the dashboard.");
   }
 };
@@ -201,5 +281,100 @@ export const adminOrderDetailsPage = async (req, res) => {
   } catch (error) {
     console.error("Error loading admin order details:", error);
     res.status(500).send("Something went wrong loading order details.");
+  }
+};
+
+export const usersListPage = async (req, res) => {
+  // console.log("Admin UserstList route working 🚀");
+  try {
+    const db = await connectDB();
+
+    let usersData = await db
+      .collection(collection.USERS_COLLECTION)
+      .find({})
+      .toArray();
+
+    // format createdAt before sending to HBS
+    usersData = usersData.map((user) => {
+      return {
+        ...user,
+        createdAtFormatted: new Date(user.createdAt).toLocaleDateString(
+          "en-GB"
+        ), // dd/mm/yyyy
+      };
+    });
+
+    // console.log("userData:", usersData);
+
+    res.render("admin/userList", {
+      layout: "admin",
+      title: "Admin - Users List",
+      usersData,
+    });
+  } catch (error) {
+    // console.error("Error fetching user data:", error);
+    res.render("admin/userList", {
+      layout: "admin",
+      title: "Admin - UsersList",
+      usersData: [],
+    });
+  }
+};
+
+export const blockUnblockUser = async (req, res) => {
+  console.log("Block/Unblock User route working 🚀");
+  // console.log(req.params.id);
+  // console.log(req.query.status);
+  try {
+    const db = await connectDB();
+    const userId = req.params.id; // user id from params
+    const { status } = req.query; // status from query true/false
+
+    if (!ObjectId.isValid(userId)) {
+      return res.status(400).json({ message: "Invalid user ID" });
+    }
+
+    const isBlock = status === "true"; // convert query string to boolean
+
+    // Prepare update data (no blockedAt)
+    const updateData = {
+      isBlocked: isBlock,
+      isActive: !isBlock,
+      updatedAt: new Date(),
+    };
+
+    const result = await db
+      .collection(collection.USERS_COLLECTION)
+      .updateOne({ _id: new ObjectId(userId) }, { $set: updateData });
+
+    if (result.modifiedCount === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // res.status(200).json({
+    //   message: isBlock ? "User blocked successfully" : "User unblocked successfully",
+    // });
+
+    res.redirect("/admin/users-list");
+  } catch (error) {
+    console.error("Block/Unblock User Error:", error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const adminLogout = (req, res) => {
+  try {
+    // Clear the token cookie on logout
+    res.clearCookie("adminToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Strict",
+    });
+
+    // Redirect back to login page
+    return res.redirect("/admin");
+  } catch (err) {
+    // console.error("Logout Error:", err.message);
+    return res.redirect("/admin");
   }
 };

@@ -103,7 +103,7 @@
                       ></i></a>
                   </div>
                   <form action="/add-to-cart" method="POST">
-                    <input type="hidden" name="productId" value="{{Product._id}}" />
+                    <input type="hidden" name="productId" value="{{Product.productId}}" />
                   {{#if (gt Product.stock 0)}}
                       <button type="submit" class="button button-add-to-cart" href="">
                         Add to cart

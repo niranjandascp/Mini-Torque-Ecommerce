@@ -3,10 +3,13 @@ import {
   adminAddProductPage,
   adminDashboardPage,
   adminLoginPage,
+  adminLogout,
   adminOrderDetailsPage,
   adminOrdersListPage,
   adminProductlistPage,
+  blockUnblockUser,
   updateOrderStatus,
+  usersListPage,
 } from "../controllers/adminController.js";
 import { adminLogin } from "../controllers/adminAuth.js";
 import {
@@ -49,5 +52,11 @@ adminRoutes.get("/orders-list", adminOrdersListPage);
 adminRoutes.get("/update-order-status/:id/:status", updateOrderStatus);
 
 adminRoutes.get("/orders/:id", adminOrderDetailsPage);
+
+adminRoutes.get("/users-list", usersListPage);
+
+adminRoutes.post("/block-user/:id", blockUnblockUser);
+
+adminRoutes.get("/logout", adminLogout);
 
 export default adminRoutes;

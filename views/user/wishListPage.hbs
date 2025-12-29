@@ -14,22 +14,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              {{!-- {{#each wishList}} --}}
+              {{!-- <tr>
                 <td class="image product-thumbnail"><img
-                    src="assets/imgs/shop/product-1-1.jpg"
+                    src="{{this.productImage}}"
                     alt="#"
                   /></td>
                 <td class="product-des product-name">
                   <h5 class="product-name"><a
                       href="shop-product-right.html"
-                    >J.Crew Mercantile Women's Short-Sleeve</a></h5>
-                  <p class="font-xs">Maboriosam in a tonto nesciung eget<br />
-                    distingy magndapibus.
+                    >{{this.productName}}</a></h5>
+                  <p class="font-xs">{{this.category}}
                   </p>
                 </td>
-                <td class="price" data-title="Price"><span>$65.00 </span></td>
+                <td class="price" data-title="Price"><span>₹{{this.discountPrice}}</span></td>
                 <td class="text-center" data-title="Stock">
-                  <span class="color3 font-weight-bold">In Stock</span>
+                  <span class="color3 font-weight-bold">{{this.stockStatus}}</span>
                 </td>
                 <td class="text-right" data-title="Cart">
                   <button class="btn btn-sm"><i
@@ -39,58 +39,52 @@
                 <td class="action" data-title="Remove"><a href="#"><i
                       class="fi-rs-trash"
                     ></i></a></td>
-              </tr>
-              <tr>
-                <td class="image"><img
-                    src="assets/imgs/shop/product-2-1.jpg"
-                    alt="#"
-                  /></td>
-                <td class="product-des">
-                  <h5 class="product-name"><a
-                      href="shop-product-right.html"
-                    >Amazon Essentials Women's Tank</a></h5>
-                  <p class="font-xs">Sit at ipsum amet clita no est,<br />
-                    sed amet sadipscing et gubergren</p>
-                </td>
-                <td class="price" data-title="Price"><span>$75.00 </span></td>
-                <td class="text-center" data-title="Stock">
-                  <span class="color3 font-weight-bold">In Stock</span>
-                </td>
-                <td class="text-right" data-title="Cart">
-                  <button class="btn btn-sm"><i
-                      class="fi-rs-shopping-bag mr-5"
-                    ></i>Add to cart</button>
-                </td>
-                <td class="action" data-title="Remove"><a href="#"><i
-                      class="fi-rs-trash"
-                    ></i></a></td>
-              </tr>
-              <tr>
-                <td class="image"><img
-                    src="assets/imgs/shop/product-3-1.jpg"
-                    alt="#"
-                  /></td>
-                <td class="product-des">
-                  <h5 class="product-name"><a
-                      href="shop-product-right.html"
-                    >Amazon Brand - Daily Ritual Women's Jersey </a></h5>
-                  <p class="font-xs">Erat amet et et amet diam et et.<br />
-                    Justo amet at dolore
-                  </p>
-                </td>
-                <td class="price" data-title="Price"><span>$62.00 </span></td>
-                <td class="text-center" data-title="Stock">
-                  <span class="text-danger font-weight-bold">Out of stock</span>
-                </td>
-                <td class="text-right" data-title="Cart">
-                  <button class="btn btn-sm btn-secondary"><i
-                      class="fi-rs-headset mr-5"
-                    ></i>Contact Us</button>
-                </td>
-                <td class="action" data-title="Remove"><a href="#"><i
-                      class="fi-rs-trash"
-                    ></i></a></td>
-              </tr>
+              </tr> --}}
+              {{#each wishList}}
+                <tr>
+                  <td class="image product-thumbnail">
+                    <img src="{{this.thumbnail}}" alt="#" />
+                  </td>
+
+                  <td class="product-des product-name">
+                    <h5>{{this.productName}}</h5>
+                    <p class="font-xs">{{this.category}}</p>
+                  </td>
+
+                  <td>₹{{this.price}}</td>
+
+                  <td>
+                    <span class="color3 font-weight-bold">In Stock</span>
+                  </td>
+
+                  <td>
+                    <form
+                      action="/add-to-cart"
+                      method="POST"
+                      style="display: inline;"
+                    >
+                      <input
+                        type="hidden"
+                        name="productId"
+                        value="{{this.productId}}"
+                      />
+                      <button
+                        type="submit"
+                        aria-label="Add To Cart"
+                        class="btn btn-sm"
+                      >Add to cart</button>
+                    </form>
+                  </td>
+
+                  <td>
+                    <a href="/wishlist/remove/{{this.productId}}">
+                      <i class="fi-rs-trash"></i>
+                    </a>
+                  </td>
+                </tr>
+              {{/each}}
+
+              {{!-- {{/each}} --}}
             </tbody>
           </table>
         </div>

@@ -15,6 +15,7 @@ import {
   productListingPage,
   productViewPage,
   removeFromCart,
+  removeFromWishlist,
   signUpPage,
   updateUserDetails,
   wishlistPage,
@@ -64,6 +65,8 @@ userRoutes.get("/order-history", requireAuth, getOrderHistory);
 
 userRoutes.get("/wishlist", wishlistPage);
 
-userRoutes.post("/shop-wishlist.html", addToWishlist);
+userRoutes.post("/wishlist/add", addToWishlist);
+
+userRoutes.get("/wishlist/remove/:productId", removeFromWishlist);
 
 export default userRoutes;
