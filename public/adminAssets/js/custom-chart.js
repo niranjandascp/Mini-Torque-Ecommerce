@@ -6,8 +6,8 @@
     const canvas = document.getElementById("myChart");
     const ctx = canvas.getContext("2d");
 
-    const menData = JSON.parse(canvas.getAttribute("data-men"));
-    const womenData = JSON.parse(canvas.getAttribute("data-women"));
+    const superCarsData = JSON.parse(canvas.getAttribute("data-super"));
+    const jdmCarsData = JSON.parse(canvas.getAttribute("data-jdm"));
 
     var chart = new Chart(ctx, {
       // The type of chart we want to create
@@ -31,21 +31,21 @@
         ],
         datasets: [
           {
-            label: "Men",
+            label: "Super Cars",
             tension: 0.3,
             fill: true,
             backgroundColor: "rgba(44, 120, 220, 0.2)",
             borderColor: "rgba(44, 120, 220)",
-            data: menData,
+            data: superCarsData,
           },
 
           {
-            label: "Women",
+            label: "JDM Cars",
             tension: 0.3,
             fill: true,
             backgroundColor: "rgba(380, 200, 230, 0.2)",
             borderColor: "rgb(380, 200, 230)",
-            data: womenData,
+            data: jdmCarsData,
           },
         ],
       },

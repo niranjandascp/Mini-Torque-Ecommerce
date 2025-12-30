@@ -68,7 +68,12 @@
       <div class="card mb-4">
         <article class="card-body">
           <h5 class="card-title">Sale statistics</h5>
-          <canvas id="myChart" height="120px"></canvas>
+          <canvas
+            id="myChart"
+            height="120px"
+            data-super='{{{superCarsData}}}'
+            data-jdm='{{{jdmCarsData}}}'
+          ></canvas>
         </article>
       </div>
     </div>
@@ -77,15 +82,15 @@
       <div class="card mb-4">
         <article class="card-body">
           <h5 class="card-title">Order Status</h5>
-          {{!-- <div style="margin-top: 160px;"> --}}
-            <canvas
-              id="myChart2"
-              height="120"
-              data-labels='{{{donutLabels}}}'
-              data-values='{{{donutData}}}'
-            >
-            </canvas>
-          {{!-- </div> --}}
+          {{! <div style="margin-top: 160px;"> }}
+          <canvas
+            id="myChart2"
+            height="120"
+            data-labels='{{{donutLabels}}}'
+            data-values='{{{donutData}}}'
+          >
+          </canvas>
+          {{! </div> }}
 
         </article>
       </div>

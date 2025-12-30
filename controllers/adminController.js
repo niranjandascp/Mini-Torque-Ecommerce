@@ -2,7 +2,11 @@ import connectDB from "../config/db.js";
 import collection from "../config/collection.js";
 import { getAllProducts } from "./productController.js";
 import { ObjectId } from "mongodb";
-import { getDonutChartData, getStatsAnalytics } from "./analatycsController.js";
+import {
+  getDonutChartData,
+  getLineChartData,
+  getStatsAnalytics,
+} from "./analatycsController.js";
 
 export const adminLoginPage = async (req, res) => {
   try {
@@ -19,7 +23,9 @@ export const adminDashboardPage = async (req, res) => {
 
     const donutChartData = await getDonutChartData();
 
-    console.log("donut Chart Data", donutChartData.donutData);
+    const lineChartStats = await getLineChartData();
+
+    console.log("🛠️🛠️🛠️🛠️ LineCart Status", lineChartStats);
 
     // Render dashboard with statistics
     res.render("admin/dashboard", {
@@ -28,6 +34,8 @@ export const adminDashboardPage = async (req, res) => {
       stats: statsData,
       donutLabels: donutChartData.donutLabels,
       donutData: donutChartData.donutData,
+      superCarsData: JSON.stringify(lineChartStats.superCarsData),
+      jdmCarsData: JSON.stringify(lineChartStats.jdmCarsData),
     });
   } catch (error) {
     console.error("Error loading dashboard:", error);
