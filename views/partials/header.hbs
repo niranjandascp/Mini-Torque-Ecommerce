@@ -104,21 +104,14 @@
 
             {{#if loggedInUser}}
               {{!-- Fetch user ID for wishlist count --}}
-              
-              {{else}}
-                {{!-- Assuming user ID is stored in _id field --}}
-                {{!-- Storing user ID in a variable for later use --}}
-              
-            
-
-            <!-- Wishlist -->
+              <!-- Wishlist -->
             <div class="header-action-icon-2">
               <a href="/wishlist">
                 <img
                   alt="wishlist"
                   src="/userAssets/imgs/theme/icons/icon-heart.svg"
                 />
-                <span class="pro-count">{{userId}}</span>
+                <span class="pro-count">3</span>
               </a>
             </div>
 
@@ -132,6 +125,11 @@
                 <span class="pro-count">2</span>
               </a>
             </div>
+              {{else}}
+                {{!-- Assuming user ID is stored in _id field --}}
+                {{!-- Storing user ID in a variable for later use --}}
+              
+            
             {{/if}}
 
             <!-- Burger Menu (Mobile Only) -->
