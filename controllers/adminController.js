@@ -5,7 +5,7 @@ import { ObjectId } from "mongodb";
 
 export const adminLoginPage = async (req, res) => {
   try {
-    res.render("admin/adminLogin", { layout: "admin", title: "Admin Login" });
+    res.render("admin/admin-login", { layout: "admin", title: "Admin Login" });
   } catch (error) {
     console.log(error);
     res.status(500).send("Something went wrong loading the dashboard.");

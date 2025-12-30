@@ -6,7 +6,7 @@ export const adminLogin = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.render("admin/adminLogin", {
+      return res.render("admin/admin-login", {
         layout: "admin",
         title: "Admin Login",
         error: "Email and password are required.",
@@ -17,7 +17,7 @@ export const adminLogin = async (req, res) => {
       email !== process.env.ADMIN_EMAIL ||
       password !== process.env.ADMIN_PASSWORD
     ) {
-      return res.render("admin/adminLogin", {
+      return res.render("admin/admin-login", {
         layout: "admin",
         title: "Admin Login",
         error: "Invalid credentials.",
@@ -40,7 +40,7 @@ export const adminLogin = async (req, res) => {
     return res.redirect("/admin/dashboard");
   } catch (error) {
     console.error("Admin login error:", error);
-    return res.render("admin/adminLogin", {
+    return res.render("admin/admin-login", {
       layout: "admin",
       title: "Admin Login",
       error: "Something went wrong. Please try again.",
