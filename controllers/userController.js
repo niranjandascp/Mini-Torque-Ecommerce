@@ -114,9 +114,15 @@ export const accountDetailsPage = async (req, res) => {
     delete user.password;
     // console.log("user Data ><><><><>", user);
 
+    const order = await db
+      .collection(collection.ORDERS_COLLECTION)
+      .find({ userId: decoded.id })
+      .toArray();
+
     res.render("user/accountDetailsPage", {
       title: "Account Details - Mini Torque",
       user,
+      order,
     });
   } catch (error) {
     console.error("Account details error:", error);

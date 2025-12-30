@@ -103,36 +103,18 @@
                           </tr>
                         </thead>
                         <tbody>
+                          {{#each order}}
                           <tr>
-                            <td>#1357</td>
-                            <td>March 45, 2020</td>
-                            <td>Processing</td>
-                            <td>$125.00 for 2 item</td>
+                            <td>{{this.orderId}}</td>
+                            <td>{{this.date}}</td>
+                            <td>{{this.status}}</td>
+                            <td>{{this.total}}</td>
                             <td><a
-                                href="#"
+                                href="/order-history"
                                 class="btn-small d-block"
                               >View</a></td>
                           </tr>
-                          <tr>
-                            <td>#2468</td>
-                            <td>June 29, 2020</td>
-                            <td>Completed</td>
-                            <td>$364.00 for 5 item</td>
-                            <td><a
-                                href="#"
-                                class="btn-small d-block"
-                              >View</a></td>
-                          </tr>
-                          <tr>
-                            <td>#2366</td>
-                            <td>August 02, 2020</td>
-                            <td>Completed</td>
-                            <td>$280.00 for 3 item</td>
-                            <td><a
-                                href="#"
-                                class="btn-small d-block"
-                              >View</a></td>
-                          </tr>
+                          {{/each}}
                         </tbody>
                       </table>
                     </div>
@@ -196,8 +178,8 @@
                       <div class="alert alert-danger">{{error}}</div>
                     {{/if}}
                     
-                    <p>Already have an account?
-                      <a href="page-login-register.html">Log in instead!</a></p>
+                    {{!-- <p>Already have an account?
+                      <a href="page-login-register.html">Log in instead!</a></p> --}}
                     <form method="post" name="enq">
                       <div class="row">
                         <div class="form-group col-md-12">
