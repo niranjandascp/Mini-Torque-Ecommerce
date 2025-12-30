@@ -26,7 +26,7 @@ const deleteFile = (filePath) => {
 
 // create Products
 export const createProduct = async (req, res) => {
-  console.log("create product route working >>>>>>>>");
+  // console.log("create product route working >>>>>>>>");
   // console.log("Body:", req.body);
   // console.log("Files:", req.files);
 
@@ -63,7 +63,7 @@ export const createProduct = async (req, res) => {
       .collection(collection.PRODUCTS_COLLECTION)
       .insertOne(productData);
 
-    console.log("✅ New product added:", result.insertedId);
+    // console.log("✅ New product added:", result.insertedId);
 
     // return res.redirect("/admin/add-product");
     return res.redirect("/admin/products-list");                                                                                                                                                  
@@ -81,7 +81,7 @@ export const getAllProducts = async () => {
       .collection(collection.PRODUCTS_COLLECTION)
       .find({})
       .toArray();
-      console.log(products)
+      // console.log(products)
 
     return products;
   } catch (error) {
@@ -133,7 +133,7 @@ export const editProductDetails = async (req, res) => {
       .collection(collection.PRODUCTS_COLLECTION)
       .updateOne({_id: new ObjectId(String(productId))}, { $set: updatedData });
 
-    console.log("Edit product route working >>>>>>>>");
+    // console.log("Edit product route working >>>>>>>>");
     res.redirect("/admin/products-list");
   } catch (error) {
     console.error("❌ Edit product error:", error);
@@ -147,7 +147,7 @@ export const editProductDetails = async (req, res) => {
 export const deleteProduct = async (req, res) => {
   try {
     const productId = req.params.id;
-    console.log('Delete product route working >>>>>>>>', productId);
+    // console.log('Delete product route working >>>>>>>>', productId);
 
     const db = await connectDB();
 

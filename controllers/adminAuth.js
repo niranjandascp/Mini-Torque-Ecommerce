@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 export const adminLogin = async (req, res) => {
-  console.log("adminlogin func called>>>>>>>>>>>>>>", req.body);
+  // console.log("adminlogin func called>>>>>>>>>>>>>>", req.body);
   try {
     const { email, password } = req.body;
 

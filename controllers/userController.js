@@ -8,7 +8,7 @@ import { ObjectId } from "mongodb";
 import { v7 as uuidv7 } from "uuid";
 
 export const landingPage = async (req, res) => {
-  console.log("🚀 landingPage function called");
+  // console.log("🚀 landingPage function called");
   try {
     let user = null;
     const token = req.cookies?.token;
@@ -53,7 +53,7 @@ export const landingPage = async (req, res) => {
 
     // console.log("user wishlist", userData.cart.length);
 
-    console.log("full user data>>>>>>😁😁😁", userData);
+    // console.log("full user data>>>>>>😁😁😁", userData);
 
   
 
@@ -436,7 +436,7 @@ export const clearCart = async (req, res) => {
 
     res.redirect("/cart"); // redirect back to landing page
   } catch (error) {
-    // console.log("Error clearing cart:", error);
+    console.log("Error clearing cart:", error);
     res.status(500).send("Something went wrong while clearing the cart");
   }
 };
@@ -460,7 +460,7 @@ export const removeFromCart = async (req, res) => {
 
     res.redirect("/cart"); // Redirect back to landing page
   } catch (error) {
-    // console.log("Error removing item from cart:", error);
+    console.log("Error removing item from cart:", error);
     res.status(500).send("Something went wrong");
   }
 };
@@ -491,7 +491,7 @@ export const checkoutPage = async (req, res) => {
       addresses, // ✅ Pass to HBS
     });
   } catch (error) {
-    // console.error(error);
+    console.error(error);
     res.send("Something went wrong");
   }
 };
@@ -544,7 +544,7 @@ export const createAddress = async (req, res) => {
     // console.log("✅ Address added successfully. Redirecting...");
     res.redirect("/checkout");
   } catch (error) {
-    // console.error("🔥 Error creating address:", error);
+    console.error("🔥 Error creating address:", error);
     res.status(500).send("Internal Server Error");
   }
 };
@@ -734,7 +734,7 @@ export const getOrderHistory = async (req, res) => {
       };
     });
 
-    console.log("formateed orders#######", formattedOrders);
+    // console.log("formateed orders#######", formattedOrders);
 
     // ✅ Render the correct view inside "views/user/getOrderHistory.hbs"
     res.render("user/getOrderHistory", { orders: formattedOrders });
@@ -745,11 +745,11 @@ export const getOrderHistory = async (req, res) => {
 };
 
 export const wishlistPage = async (req, res) => {
-  console.log("⭐⭐⭐wishlisht page funtion called>>>>>>>>");
+  // console.log("⭐⭐⭐wishlisht page funtion called>>>>>>>>");
   try {
     const userId = req.loggedInUser?.id;
 
-    console.log("userId<><><><><><><", userId);
+    // console.log("userId<><><><><><><", userId);
 
     if (!userId) return res.redirect("/login");
 
@@ -759,7 +759,7 @@ export const wishlistPage = async (req, res) => {
       .collection(collection.USERS_COLLECTION)
       .findOne({ userId: userId });
 
-    console.log("user wishlist Data💾💾💾💾💾", user.wishlist);
+    // console.log("user wishlist Data💾💾💾💾💾", user.wishlist);
 
     res.render("user/wishlistPage", {
       wishList: user?.wishlist || [],
@@ -771,7 +771,7 @@ export const wishlistPage = async (req, res) => {
 };
 
 export const addToWishlist = async (req, res) => {
-  console.log("add to wishlist called#@$#@@@", req.bo);
+  // console.log("add to wishlist called#@$#@@@", req.bo);
   try {
     const userId = req.loggedInUser?.id;
     const { productId } = req.body;
@@ -824,7 +824,7 @@ export const addToWishlist = async (req, res) => {
 };
 
 export const removeFromWishlist = async (req, res) => {
-  console.log("remove from wishlist called####", req.params);
+  // console.log("remove from wishlist called####", req.params);
   try {
     const userId = req.loggedInUser?.id;
     const { productId } = req.params;

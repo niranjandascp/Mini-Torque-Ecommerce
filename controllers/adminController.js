@@ -2,6 +2,7 @@ import connectDB from "../config/db.js";
 import collection from "../config/collection.js";
 import { getAllProducts } from "./productController.js";
 import { ObjectId } from "mongodb";
+import { getDonutChartData, getStatsAnalytics } from "./analatycsController.js";
 
 export const adminLoginPage = async (req, res) => {
   try {
@@ -14,91 +15,20 @@ export const adminLoginPage = async (req, res) => {
 
 export const adminDashboardPage = async (req, res) => {
   try {
-    const db = await connectDB();
+    const statsData = await getStatsAnalytics();
 
-    // Get current year boundaries
-    const currentYear = new Date().getFullYear();
-    const yearStart = new Date(currentYear, 0, 1);
-    const yearEnd = new Date(currentYear, 11, 31, 23, 59, 59);
+    const donutChartData = await getDonutChartData();
 
-    // Fetch all necessary data in parallel for better performance
-    const [
-      totalRevenue,
-      totalOrders,
-      totalProducts,
-      yearlyUsers,
-      recentOrders
-    ] = await Promise.all([
-      // Total Revenue from all paid/delivered orders
-      db.collection(collection.ORDERS_COLLECTION)
-        .aggregate([
-          { 
-            $match: { 
-              status: { $in: ["Paid", "Delivered", "Shipped"] } 
-            } 
-          },
-          { 
-            $group: { 
-              _id: null, 
-              totalRevenue: { $sum: "$total" } 
-            } 
-          }
-        ])
-        .toArray(),
-
-      // Total number of orders
-      db.collection(collection.ORDERS_COLLECTION).countDocuments(),
-
-      // Total number of products
-      db.collection(collection.PRODUCTS_COLLECTION).countDocuments(),
-
-      // Number of users who ordered this year
-      db.collection(collection.ORDERS_COLLECTION)
-        .aggregate([
-          { 
-            $match: { 
-              createdAt: { $gte: yearStart, $lte: yearEnd } 
-            } 
-          },
-          { 
-            $group: { 
-              _id: "$userId" 
-            } 
-          },
-          { 
-            $count: "uniqueUsers" 
-          }
-        ])
-        .toArray(),
-
-      // Recent 5 orders for dashboard preview
-      db.collection(collection.ORDERS_COLLECTION)
-        .find({})
-        .sort({ createdAt: -1 })
-        .limit(5)
-        .toArray()
-    ]);
-
-    // Extract revenue and yearly users count
-    const revenue = totalRevenue[0]?.totalRevenue || 0;
-    const yearlyOrderedUsers = yearlyUsers[0]?.uniqueUsers || 0;
-
-    // Prepare dashboard statistics
-    const stats = {
-      totalRevenue: revenue.toFixed(2),
-      totalOrders,
-      totalProducts,
-      yearlyOrderedUsers,
-      recentOrders
-    };
+    console.log("donut Chart Data", donutChartData.donutData);
 
     // Render dashboard with statistics
     res.render("admin/dashboard", {
       layout: "admin",
       title: "Admin Dashboard",
-      stats
+      stats: statsData,
+      donutLabels: donutChartData.donutLabels,
+      donutData: donutChartData.donutData,
     });
-
   } catch (error) {
     console.error("Error loading dashboard:", error);
     res.status(500).send("Something went wrong loading the dashboard.");
@@ -106,7 +36,7 @@ export const adminDashboardPage = async (req, res) => {
 };
 
 export const adminAddProductPage = async (req, res) => {
-  console.log("Admin AddProduct route working 🚀");
+  // console.log("Admin AddProduct route working 🚀");
 
   try {
     res.render("admin/addProduct", {
@@ -120,7 +50,7 @@ export const adminAddProductPage = async (req, res) => {
 };
 
 export const adminProductlistPage = async (req, res) => {
-  console.log("Admin Product List route working 🚀");
+  // console.log("Admin Product List route working 🚀");
 
   try {
     const db = await connectDB();
@@ -140,7 +70,7 @@ export const adminProductlistPage = async (req, res) => {
 };
 
 export const adminOrdersListPage = async (req, res) => {
-  console.log("Admin OrdersList route working 🚀");
+  // console.log("Admin OrdersList route working 🚀");
   try {
     const db = await connectDB();
 
@@ -176,7 +106,7 @@ export const adminOrdersListPage = async (req, res) => {
             });
             if (user && user.email) userEmail = user.email;
           } catch (err) {
-            // console.log("Error fetching user email for order:", order._id, err);
+            console.log("Error fetching user email for order:", order._id, err);
           }
         }
 
@@ -196,7 +126,7 @@ export const adminOrdersListPage = async (req, res) => {
       orders: ordersWithTotals,
     });
   } catch (error) {
-    // console.error("Error loading admin orders list:", error);
+    console.error("Error loading admin orders list:", error);
     res
       .status(500)
       .send("Something went wrong while loading orders for admin.");
@@ -222,7 +152,7 @@ export const updateOrderStatus = async (req, res) => {
     // Redirect back to orders list
     res.redirect("/admin/orders-list");
   } catch (error) {
-    // console.error("❌ Error updating order status:", error);
+    console.error("❌ Error updating order status:", error);
     res.status(500).send("Failed to update order status.");
   }
 };
@@ -238,7 +168,7 @@ export const adminOrderDetailsPage = async (req, res) => {
 
     // Fetch the order by ID
     const order = await ordersCollection.findOne({
-      _id: new ObjectId (orderId),
+      _id: new ObjectId(orderId),
     });
     // console.log("???????? order", order)
 
@@ -268,7 +198,7 @@ export const adminOrderDetailsPage = async (req, res) => {
       0
     );
 
-    console.log("cart with product Details>>>>>",cartWithProductDetails)
+    // console.log("cart with product Details>>>>>", cartWithProductDetails);
 
     // Render the order details page
     res.render("admin/order-details", {
@@ -322,7 +252,7 @@ export const usersListPage = async (req, res) => {
 };
 
 export const blockUnblockUser = async (req, res) => {
-  console.log("Block/Unblock User route working 🚀");
+  // console.log("Block/Unblock User route working 🚀");
   // console.log(req.params.id);
   // console.log(req.query.status);
   try {
@@ -374,7 +304,7 @@ export const adminLogout = (req, res) => {
     // Redirect back to login page
     return res.redirect("/admin");
   } catch (err) {
-    // console.error("Logout Error:", err.message);
+    console.error("Logout Error:", err.message);
     return res.redirect("/admin");
   }
 };
