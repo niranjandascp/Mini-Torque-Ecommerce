@@ -6,6 +6,7 @@ import { getProductsData } from "./productController.js";
 import collection from "../config/collection.js";
 import { ObjectId } from "mongodb";
 import { v7 as uuidv7 } from "uuid";
+import bcrypt from "bcrypt";
 
 export const landingPage = async (req, res) => {
   // console.log("🚀 landingPage function called");
@@ -164,7 +165,7 @@ export const updateUserDetails = async (req, res) => {
       });
     }
 
-    // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", isCurrentPasswordValid);
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", isCurrentPasswordValid);
 
     // ✅ Handle new password (optional)
     let hashedPassword = user.password;
@@ -194,7 +195,7 @@ export const updateUserDetails = async (req, res) => {
       user: updatedUser,
     });
 
-    // console.log("<><<<><><><><><><>Updated User Data:", updatedUser);
+    console.log("<><<<><><><><><><>Updated User Data:", updatedUser);
   } catch (err) {
     // console.error(err);
     res.render("user/accountDetailsPage", {

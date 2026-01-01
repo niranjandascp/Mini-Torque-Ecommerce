@@ -22,6 +22,8 @@ import {
 } from "../controllers/userController.js";
 import { logIn, logoutUser, signUp } from "../controllers/userAuth.js";
 import { requireAuth } from "../middleware/requireAuth.js";
+import { redirectIfLoggedIn } from "../middleware/redirectIfLoggedIn.js";
+import { noCache } from "../middleware/noCache.js";
 
 const userRoutes = express.Router({ mergeParams: true });
 
@@ -29,25 +31,25 @@ userRoutes.get("/", landingPage);
 
 userRoutes.get("/login", loginPage);
 
-userRoutes.get("/signup", signUpPage);
+userRoutes.get("/signup", noCache, redirectIfLoggedIn, signUpPage);
 
-userRoutes.post("/create-user", signUp);
+userRoutes.post("/create-user", noCache, redirectIfLoggedIn, signUp);
 
 userRoutes.post("/login-user", logIn);
 
 userRoutes.get("/logout", logoutUser);
 
-userRoutes.get("/account-details", accountDetailsPage);
+userRoutes.get("/account-details", requireAuth, accountDetailsPage);
 
-userRoutes.post("/account-details", updateUserDetails);
+userRoutes.post("/account-details", requireAuth, updateUserDetails);
 
 userRoutes.get("/product/view", productViewPage);
 
 userRoutes.get("/products", productListingPage);
 
-userRoutes.get("/cart", cartPage);
+userRoutes.get("/cart", requireAuth, cartPage);
 
-userRoutes.post("/add-to-cart", addToCart);
+userRoutes.post("/add-to-cart", requireAuth, addToCart);
 
 userRoutes.get("/cart/clear", clearCart);
 
@@ -63,10 +65,9 @@ userRoutes.get("/order-success", orderSuccess);
 
 userRoutes.get("/order-history", requireAuth, getOrderHistory);
 
-userRoutes.get("/wishlist", wishlistPage);
+userRoutes.get("/wishlist", requireAuth, wishlistPage);
 
-userRoutes.post("/wishlist/add", addToWishlist);
+userRoutes.post("/wishlist/add", requireAuth, addToWishlist);
 
-userRoutes.get("/wishlist/remove/:productId", removeFromWishlist);
-
+userRoutes.get("/wishlist/remove/:productId", requireAuth, removeFromWishlist);
 export default userRoutes;
