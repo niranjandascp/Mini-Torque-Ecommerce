@@ -768,7 +768,7 @@ export const wishlistPage = async (req, res) => {
 
     // console.log("user wishlist Data💾💾💾💾💾", user.wishlist);
 
-    res.render("user/wishlistPage", {
+    res.render("user/wishListPage", {
       wishList: user?.wishlist || [],
     });
   } catch (err) {
