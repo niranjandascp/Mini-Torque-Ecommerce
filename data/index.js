@@ -55,32 +55,32 @@ export const brandData = [
   {
     name: "Hot Wheels",
     image: "/userAssets/imgs/brands/hot-wheels.png",
-    link: "/shop?brand=Hot%20Wheels",
+    link: "/shop-grid-right.html",
   },
   {
     name: "Mini GT",
     image: "/userAssets/imgs/brands/mini-gt.png",
-    link: "/shop?brand=Mini%20GT",
+    link: "/shop-grid-right.html",
   },
   {
     name: "Majorette",
     image: "/userAssets/imgs/brands/majorette.png",
-    link: "/shop?brand=Majorette",
+    link: "/shop-grid-right.html",
   },
   {
     name: "Maisto",
     image: "/userAssets/imgs/brands/maisto.png",
-    link: "/shop?brand=Maisto",
+    link: "/shop-grid-right.html",
   },
   {
     name: "Johnny Lightning",
-    image: "/userAssets/imgs/brands/johnny-lightning.png",
-    link: "/shop?brand=Johnny%20Lightning",
+      image: "/userAssets/imgs/brands/johnny-lightning.png",
+      link: "/shop?brand=Johnny%20Lightning",
   },
   {
     name: "Tomica",
     image: "/userAssets/imgs/brands/tomica.png",
-    link: "/shop?brand=Tomica",
+    link: "/shop-grid-right.html",
   },
   // {
   //   name: "GreenLight",
