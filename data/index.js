@@ -54,32 +54,32 @@ export const bannerData = [
 export const brandData = [
   {
     name: "Hot Wheels",
-    image: "/userAssets/imgs/brands/hot-wheels.png",
+    image: "/userAssets/imgs/Brands/hot-wheels.png",
     link: "/shop-grid-right.html",
   },
   {
     name: "Mini GT",
-    image: "/userAssets/imgs/brands/mini-gt.png",
+    image: "/userAssets/imgs/Brands/mini-gt.png",
     link: "/shop-grid-right.html",
   },
   {
     name: "Majorette",
-    image: "/userAssets/imgs/brands/majorette.png",
+    image: "/userAssets/imgs/Brands/majorette.png",
     link: "/shop-grid-right.html",
   },
   { 
     name: "Maisto",
-    image: "/userAssets/imgs/brands/maisto.png",
+    image: "/userAssets/imgs/Brands/maisto.png",
     link: "/shop-grid-right.html",
   },
   {
     name: "Johnny Lightning",
-      image: "/userAssets/imgs/brands/johnny-lightning.png",
+      image: "/userAssets/imgs/Brands/johnny-lightning.png",
       link: "/shop?brand=Johnny%20Lightning",
   },
   {
     name: "Tomica",
-    image: "/userAssets/imgs/brands/tomica.png",
+    image: "/userAssets/imgs/Brands/tomica.png",
     link: "/shop-grid-right.html",
   },
   // {
