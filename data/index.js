@@ -67,7 +67,7 @@ export const brandData = [
     image: "/userAssets/imgs/brands/majorette.png",
     link: "/shop-grid-right.html",
   },
-  {
+  { 
     name: "Maisto",
     image: "/userAssets/imgs/brands/maisto.png",
     link: "/shop-grid-right.html",
